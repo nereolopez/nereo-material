@@ -1,0 +1,14 @@
+{
+  "name": "nereo-material",
+  "version": "0.0.5",
+  "license": "MIT",
+  "keywords":[
+    "Angular", "Angular Material", "Contextual Toolbar"
+  ],
+  "peerDependencies": {
+    "@angular/common": "^6.0.0-rc.0 || ^6.0.0",
+    "@angular/core": "^6.0.0-rc.0 || ^6.0.0",
+    "@angular/platform-browser": "^6.0.3",
+    "@angular/material": "^6.1.0"
+  }
+}
