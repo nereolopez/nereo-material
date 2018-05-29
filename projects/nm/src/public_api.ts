@@ -2,6 +2,5 @@
  * Public API Surface of nm
  */
 
-export * from './lib/nm.service';
-export * from './lib/nm.component';
-export * from './lib/nm.module';
+export * from './lib/contextual-toolbar.component';
+export * from './lib/contextual-toolbar.module';

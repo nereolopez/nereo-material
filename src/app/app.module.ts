@@ -7,6 +7,8 @@ import { MatToolbarModule, MatButtonModule, MatIconModule, MatTooltipModule, Mat
 
 import { AppComponent } from './app.component';
 
+import { ContextualToolbarModule } from '../../projects/nm/src/lib/contextual-toolbar.module';
+
 @NgModule({
   declarations: [
     AppComponent
@@ -18,6 +20,7 @@ import { AppComponent } from './app.component';
     MatButtonModule,
     MatIconModule,
     MatTooltipModule,
+    ContextualToolbarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

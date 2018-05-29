@@ -2,6 +2,7 @@
   "name": "nereo-material",
   "version": "0.0.5",
   "license": "MIT",
+  "homepage": "https://github.com/nereolopez/nereo-material",
   "keywords":[
     "Angular", "Angular Material", "Contextual Toolbar"
   ],

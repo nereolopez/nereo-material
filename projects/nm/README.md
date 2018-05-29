@@ -3,7 +3,7 @@ This project contains [Material Design](https://material.io/design/) components 
 
 It follows the Angular Material project approach, meaning that each component will be inside of its own module, so that you only have to import the one you are interested in, and not the whole library.
 
-Feel free to follow and/or contribute to the project (link will be soon available).
+Feel free to follow and/or contribute to [the project](https://github.com/nereolopez/nereo-material).
 
 ## Add it to your project
 
