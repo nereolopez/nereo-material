@@ -1,27 +1,20 @@
-# NereoMaterial
+# Nereo Material
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.5.
+This project contains the Nereo Material (nm) library, which aims to provide additional Material Design components that are not availble in Angular Material, at least, at the time of their creation. 
 
-## Development server
+## Local Development
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+It is nothing else than an Angular project with Angular Material imported. In order to see and run the code locally, follow the steps below:
 
-## Code scaffolding
+1. Clone this repository.
+2. Install the dependencies using the `npm install` command from the terminal.
+3. Serve it locally by running `ng serve`. 
+4. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Note that the library was created as an [Angular 6 CLI Library](https://github.com/angular/angular-cli/wiki/stories-create-library). The library code is located inside of `projects/nm`.
 
-## Build
+## Demo Site Project
+To see what components look like you can check the Demo Site project, either the [code](https://github.com/nereolopez/nereo-material-demo) or the [live demo](https://nereo-material-demo.firebaseapp.com/home).
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+## Contribute
+If you want to contribute, feel free to create Pull Requests or Issues suggesting new components or functionalities on the existing ones.
