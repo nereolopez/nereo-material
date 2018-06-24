@@ -1,6 +1,6 @@
 {
   "name": "nereo-material",
-  "version": "0.0.8",
+  "version": "0.1.0",
   "license": "MIT",
   "keywords":[
     "Angular", "Angular Material", "Contextual Toolbar"

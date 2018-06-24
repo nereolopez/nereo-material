@@ -72,6 +72,7 @@ import { ContextualToolbarModule } from 'nereo-material';
 |---|---|
 | @Input() count: number                                    | Receives the number of items that have been selected  |
 | @Input() actions: any                                     | Receives an array of actions to be displayed in the right corner. [See below what an action looks like](#actions)  |
+| @Input() moreActions: any                                 | Receives an array of additional actions that will be shown as a menu under the `more` button that will be automatically created. [See below what an additional action looks like](#more-actions) |
 | @Output() selectedAction = new EventEmitter<string>();    | Emits an event with the name of the selected action so that you can process it. |
 | @Output() clearSelection = new EventEmitter();            | Emits an event when the clear button (on the left side) is clicked.  |
 
@@ -86,6 +87,15 @@ The `actions` property receives an array of actions. This is what it expects as 
 }
 ```
 
+#### More Actions
+When more actions are passed to the Contextual Toolbar, a `more` button will be created as the last icon button in the toolbar. All these additional actions will be placed as a menu that will be displayed when clicking on this button. This is what the `moreActions` property is expecting:
+
+```ts
+{
+  name: 'delete'
+}
+```
+
 #### Using Contextual Toolbar
 
 Add it to as shown below components where you will have selections:
@@ -93,6 +103,7 @@ Add it to as shown below components where you will have selections:
 ```html
 <nm-contextual-toolbar [count]="selection.selected.length"
                        [actions]="actions"
+                       [moreActions]="moreActions"
                        (selectedAction)="actionSelected($event)"
                        (clearSelection)="clearSelection()"></nm-contextual-toolbar>
 ```

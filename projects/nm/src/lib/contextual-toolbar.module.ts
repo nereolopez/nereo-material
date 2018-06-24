@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { MatToolbarModule, MatButtonModule, MatIconModule, MatTooltipModule } from '@angular/material';
+import { MatToolbarModule, MatButtonModule, MatIconModule, MatTooltipModule, MatMenuModule } from '@angular/material';
 
 import { ContextualToolbarComponent } from './contextual-toolbar.component';
 
@@ -11,6 +11,7 @@ import { ContextualToolbarComponent } from './contextual-toolbar.component';
     MatButtonModule,
     MatIconModule,
     MatTooltipModule,
+    MatMenuModule,
   ],
   declarations: [ContextualToolbarComponent],
   exports: [ContextualToolbarComponent]
