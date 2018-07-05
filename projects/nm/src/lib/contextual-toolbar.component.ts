@@ -3,7 +3,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 @Component({
   selector: 'nm-contextual-toolbar',
   template: `
-    <mat-toolbar *ngIf="count > 0">
+    <mat-toolbar *ngIf="count > 0" [ngClass]="classesToApply">
       <button mat-icon-button (click)="clear()">
           <mat-icon>clear</mat-icon>
       </button>
@@ -24,9 +24,18 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
   `,
   styles: [`
   mat-toolbar{
-    position: fixed;
+    left: 0;
     top: 0;
+    width: 100%;
     z-index: 999;
+  }
+
+  .page-contextual-toolbar{
+    position: fixed;
+  }
+
+  .card-contextual-toolbar {
+    position: absolute;
   }
 
   .spacer {
@@ -42,14 +51,25 @@ export class ContextualToolbarComponent implements OnInit {
 
   @Input() moreActions: any[];
 
+  @Input() contextualizeTo: string;
+
   @Output() selectedAction = new EventEmitter<string>();
 
   @Output() clearSelection = new EventEmitter();
 
+  classesToApply = { };
+
   constructor() { }
 
   ngOnInit() {
-    
+    this.setContextualization();
+  }
+
+  private setContextualization(){
+    this.classesToApply = {
+      'page-contextual-toolbar': this.contextualizeTo != 'card',
+      'card-contextual-toolbar': this.contextualizeTo == 'card'  
+    }
   }
 
   actionSelected(action: string): void{

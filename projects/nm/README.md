@@ -15,11 +15,11 @@ npm install nereo-material --save
 ```
 
 ### Step 2. Add Dependencies
-1. In order to have the [Material Icons](https://material.io/tools/icons/) displayed correctly, make sure to add them by including the following line in your `index.html` file:
+- In order to have the [Material Icons](https://material.io/tools/icons/) displayed correctly, make sure to add them by including the following line in your `index.html` file:
 ```html
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 ```
-2. Import the `BrowserAnimationsModule` into your `AppModule`.
+- Import the `BrowserAnimationsModule` into your `AppModule`.
 ```ts
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -41,12 +41,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 export class AppModule { }
 ```
 
-3. Install Angular Material
+- Install Angular Material
 ```
 npm install --save @angular/material @angular/cdk
 ```
 
-4. Add an Angular Material theme. You can create one ([learn how](https://material.angular.io/guide/theming)) or import an existing one by adding it in your `styles.scss` file as follows:
+- Add an Angular Material theme. You can create one ([learn how](https://material.angular.io/guide/theming)) or import an existing one by adding it in your `styles.scss` file as follows:
 ```css
 @import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
 ```
@@ -73,6 +73,7 @@ import { ContextualToolbarModule } from 'nereo-material';
 | @Input() count: number                                    | Receives the number of items that have been selected  |
 | @Input() actions: any                                     | Receives an array of actions to be displayed in the right corner. [See below what an action looks like](#actions)  |
 | @Input() moreActions: any                                 | Receives an array of additional actions that will be shown as a menu under the `more` button that will be automatically created. [See below what an additional action looks like](#more-actions) |
+| @Input() contextualizeTo: string | Contextualizes the toolbar either to the `page` or to the parent `card`. It is defaulted to `page` mode. [See below the different contextualizations it can have](#contextualization) |
 | @Output() selectedAction = new EventEmitter<string>();    | Emits an event with the name of the selected action so that you can process it. |
 | @Output() clearSelection = new EventEmitter();            | Emits an event when the clear button (on the left side) is clicked.  |
 
@@ -96,6 +97,11 @@ When more actions are passed to the Contextual Toolbar, a `more` button will be 
 }
 ```
 
+#### Contextualization
+The Contextual Toolbar gives actions related to the selected content. It can currently be contextualized to the page (which will cover the main toolbar of the application on the top) or to the parent card (it will occupy the parent card's header - **be aware that the parent card has to have its `position: relative` in order to display the toolbar correctly, which would be placed inside the card's content**).
+
+You can use the [`contextualizeTo` property](#properties) with the values `page` or `card`.
+
 #### Using Contextual Toolbar
 
 Add it to as shown below components where you will have selections:
@@ -104,6 +110,7 @@ Add it to as shown below components where you will have selections:
 <nm-contextual-toolbar [count]="selection.selected.length"
                        [actions]="actions"
                        [moreActions]="moreActions"
+                       [contextualizeTo]="'card'"
                        (selectedAction)="actionSelected($event)"
                        (clearSelection)="clearSelection()"></nm-contextual-toolbar>
 ```
