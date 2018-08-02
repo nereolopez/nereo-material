@@ -74,8 +74,8 @@ import { ContextualToolbarModule } from 'nereo-material';
 | @Input() actions: any                                     | Receives an array of actions to be displayed in the right corner. [See below what an action looks like](#actions)  |
 | @Input() moreActions: any                                 | Receives an array of additional actions that will be shown as a menu under the `more` button that will be automatically created. [See below what an additional action looks like](#more-actions) |
 | @Input() contextualizeTo: string | Contextualizes the toolbar either to the `page` or to the parent `card`. It is defaulted to `page` mode. [See below the different contextualizations it can have](#contextualization) |
-| @Output() selectedAction = new EventEmitter<string>();    | Emits an event with the name of the selected action so that you can process it. |
-| @Output() clearSelection = new EventEmitter();            | Emits an event when the clear button (on the left side) is clicked.  |
+| @Output() selectedAction: EventEmitter<string>();    | Emits an event with the name of the selected action so that you can process it. |
+| @Output() clearSelection: EventEmitter();            | Emits an event when the clear button (on the left side) is clicked.  |
 
 
 #### Actions
@@ -143,8 +143,8 @@ import { BannerModule } from 'nereo-material';
 | @Input() secondSentence: string                           | Text to be displayed on the second line. This is optional. If no text provider, the first line will be vertically centered.|
 | @Input() mainActionText: string                           | Text to be displayed in the main action button. |
 | @Input() secondaryActionText: string                      | Text to be displayed in the secondary action button. If no text is passed, the button will not be shown. |
-| @Output() mainActionClick = new EventEmitter();           | Emits an event when the main button is clicked. |
-| @Output() mainActionClick = new EventEmitter();           | Emits an event when the secondary button is clicked.  |
+| @Output() mainActionClick: EventEmitter();           | Emits an event when the main button is clicked. |
+| @Output() mainActionClick: EventEmitter();           | Emits an event when the secondary button is clicked.  |
 
 #### Using Contextual Toolbar
 
