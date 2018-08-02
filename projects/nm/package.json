@@ -3,7 +3,7 @@
   "version": "0.2.0",
   "license": "MIT",
   "keywords":[
-    "Angular", "Angular Material", "Contextual Toolbar"
+    "Angular", "Angular Material", "Contextual Toolbar", "Banner"
   ],
   "peerDependencies": {
     "@angular/common": "^6.0.0-rc.0 || ^6.0.0",
