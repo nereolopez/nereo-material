@@ -119,3 +119,49 @@ Note that the `ContextualToolbarComponent` itself does not do any action, but no
 
 #### Contextual Toolbar Demo
 Check the [demo code](https://github.com/nereolopez/nereo-material-demo/tree/master/src/app/contextual-toolbar-demo) to see how to use the component and the [demo page](https://nereo-material-demo.firebaseapp.com/contextual-toolbar) to see how it looks like.
+
+### Banner
+This is the [Banner](https://material.io/design/components/banners.html) in Material Design docs. See the image below to understand it easily:
+
+![Banner](https://storage.googleapis.com/spec-host-backup/mio-design%2Fassets%2F1yplLRKqW6EKB6hjVFGt-gJnPpdEJrPFV%2Fbanners-imagery.png)
+*Image from Material Design documentation site*
+
+Keep in mind that this is intended to be used only for mid-priority messages where the user action is optional. It requires user dismissal and can have a maximum of 2 actions.
+
+#### API Reference
+
+```
+import { BannerModule } from 'nereo-material';
+```
+
+#### Properties
+| Name                                                      | Description  |
+|---|---|
+| @Input() show: boolean                                    | Receives whether the component has to be shown or not.  |
+| @Input() icon: string                                     | Receives the name of the [Material Icon](https://material.io/tools/icons/) to be displayed. If no icon shown, the text will take its space.  |
+| @Input() firstSentence: string                            | Text to be displayed in the first line. |
+| @Input() secondSentence: string                           | Text to be displayed on the second line. This is optional. If no text provider, the first line will be vertically centered.|
+| @Input() mainActionText: string                           | Text to be displayed in the main action button. |
+| @Input() secondaryActionText: string                      | Text to be displayed in the secondary action button. If no text is passed, the button will not be shown. |
+| @Output() mainActionClick = new EventEmitter();           | Emits an event when the main button is clicked. |
+| @Output() mainActionClick = new EventEmitter();           | Emits an event when the secondary button is clicked.  |
+
+#### Using Contextual Toolbar
+
+Add it to as shown below components where you will have selections:
+
+```html
+<nm-banner [icon]="'signal_wifi_off'"
+           [show]="showBanner"
+           [firstSentence]="'You have lost connection to the internet.'"
+           [secondSentence]="'This app is offline.'"
+           [mainActionText]="'turn on wifi'"
+           [secondaryActionText]="'dismiss'"
+           (mainActionClick)="mainActionClicked($event)"
+           (secondaryActionClick)="secondaryActionClicked($event)"></nm-banner>
+```
+
+Note that the `BannerComponent` is a dumb component, meaning that it does not perform any action whenever one of its buttons are clicked. Instead, it notifies you. Also keep in mind that **the `BannerComponent` does not hide itself, you will have to hide it with the `show` input property after receiving one of the output events.** 
+
+#### Banner Demo
+Check the [demo code](https://github.com/nereolopez/nereo-material-demo/tree/master/src/app/banner-demo) to see how to use the component and the [demo page](https://nereo-material-demo.firebaseapp.com/banner) to see how it looks like.
