@@ -157,8 +157,8 @@ Add it to as shown below components where you will have selections:
            [secondSentence]="'This app is offline.'"
            [mainActionText]="'turn on wifi'"
            [secondaryActionText]="'dismiss'"
-           (mainActionClick)="mainActionClicked($event)"
-           (secondaryActionClick)="secondaryActionClicked($event)"></nm-banner>
+           (mainActionClick)="mainActionClicked()"
+           (secondaryActionClick)="secondaryActionClicked()"></nm-banner>
 ```
 
 Note that the `BannerComponent` is a dumb component, meaning that it does not perform any action whenever one of its buttons are clicked. Instead, it notifies you. Also keep in mind that **the `BannerComponent` does not hide itself, you will have to hide it with the `show` input property after receiving one of the output events.** 
