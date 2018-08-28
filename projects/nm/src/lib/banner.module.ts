@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
 import { MatCardModule, MatListModule, MatIconModule, MatButtonModule } from '@angular/material';
 
 import { BannerComponent } from './banner.component';
 
 @NgModule({
   imports: [
-    BrowserModule,
+    CommonModule,
     MatCardModule,
     MatListModule,
     MatIconModule,

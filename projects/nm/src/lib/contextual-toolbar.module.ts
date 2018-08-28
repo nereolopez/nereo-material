@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
 import { MatToolbarModule, MatButtonModule, MatIconModule, MatTooltipModule, MatMenuModule } from '@angular/material';
 
 import { ContextualToolbarComponent } from './contextual-toolbar.component';
 
 @NgModule({
   imports: [
-    BrowserModule,
+    CommonModule,
     MatToolbarModule,
     MatButtonModule,
     MatIconModule,
