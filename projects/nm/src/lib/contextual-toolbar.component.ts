@@ -1,25 +1,33 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'nm-contextual-toolbar',
   template: `
     <mat-toolbar *ngIf="count > 0" [ngClass]="classesToApply">
-      <button mat-icon-button (click)="clear()">
-          <mat-icon>clear</mat-icon>
-      </button>
-      {{count}} selected
-      <span class="spacer"></span>
-      <button mat-icon-button *ngFor="let action of actions" (click)="actionSelected(action.name)">
-        <mat-icon matTooltip="{{action.name}}">{{action.icon}}</mat-icon>
-      </button>
-      <button mat-icon-button *ngIf="moreActions" [matMenuTriggerFor]="menu">
-        <mat-icon matTooltip="more">more_vert</mat-icon>
-      </button>
-      <mat-menu #menu="matMenu" yPosition="below">
-        <button mat-menu-item 
-                *ngFor="let moreAction of moreActions" 
-                (click)="actionSelected(moreAction.name)">{{moreAction.name}}</button>
-      </mat-menu>
+      <div *ngIf="!isProgressMode">
+        <button mat-icon-button (click)="clear()">
+            <mat-icon>clear</mat-icon>
+        </button>
+        {{count}} selected
+        <span class="spacer"></span>
+        <button mat-icon-button *ngFor="let action of actions" (click)="actionSelected(action.name)">
+          <mat-icon matTooltip="{{action.name}}">{{action.icon}}</mat-icon>
+        </button>
+        <button mat-icon-button *ngIf="moreActions" [matMenuTriggerFor]="menu">
+          <mat-icon matTooltip="more">more_vert</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu" yPosition="below">
+          <button mat-menu-item 
+                  *ngFor="let moreAction of moreActions" 
+                  (click)="actionSelected(moreAction.name)">{{moreAction.name}}</button>
+        </mat-menu>
+      </div>
+      <div *ngIf="isProgressMode">
+        <mat-spinner [diameter]='24'></mat-spinner>
+        {{ progressMessage }}
+        <span class="spacer"></span>
+      </div>
     </mat-toolbar>
   `,
   styles: [`
@@ -30,8 +38,19 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
     z-index: 999;
   }
 
+  mat-toolbar > div {
+    align-items: center;
+    display: flex;
+    width: 100%;
+  }
+
   .page-contextual-toolbar{
     position: fixed;
+  }
+
+  mat-spinner {
+    margin-left: 8px;
+    margin-right: 8px;
   }
 
   .card-contextual-toolbar {
@@ -59,6 +78,9 @@ export class ContextualToolbarComponent implements OnInit {
 
   classesToApply = { };
 
+  isProgressMode : boolean = false;
+  progressMessage : string = '';
+
   constructor() { }
 
   ngOnInit() {
@@ -70,6 +92,18 @@ export class ContextualToolbarComponent implements OnInit {
       'page-contextual-toolbar': this.contextualizeTo != 'card',
       'card-contextual-toolbar': this.contextualizeTo == 'card'  
     }
+  }
+
+  public startProgressMode(progressObservable: Observable<string>) {
+    this.isProgressMode = true;
+    progressObservable.subscribe((progressMessage) => {
+      this.progressMessage = progressMessage;
+    });
+  }
+
+  public stopProgressMode() {
+    this.isProgressMode = false;
+    this.progressMessage = '';
   }
 
   actionSelected(action: string): void{
