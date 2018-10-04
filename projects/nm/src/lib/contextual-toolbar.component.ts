@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
   selector: 'nm-contextual-toolbar',
   template: `
     <mat-toolbar *ngIf="count > 0" [ngClass]="classesToApply">
-      <div *ngIf="!progressStatus">
+      <div *ngIf="!isProgressMode">
         <button mat-icon-button (click)="clear()">
             <mat-icon>clear</mat-icon>
         </button>
@@ -23,9 +23,9 @@ import { Observable } from 'rxjs';
                   (click)="actionSelected(moreAction.name)">{{moreAction.name}}</button>
         </mat-menu>
       </div>
-      <div *ngIf="progressStatus">
+      <div *ngIf="isProgressMode">
         <mat-spinner></mat-spinner>
-        {{ progressText }}
+        {{ progressMessage }}
         <span class="spacer"></span>
       </div>
     </mat-toolbar>
@@ -67,8 +67,8 @@ export class ContextualToolbarComponent implements OnInit {
 
   classesToApply = { };
 
-  progressStatus : boolean = false;
-  progressText : string = '';
+  isProgressMode : boolean = false;
+  progressMessage : string = '';
 
   constructor() { }
 
@@ -83,15 +83,16 @@ export class ContextualToolbarComponent implements OnInit {
     }
   }
 
-  public enableProgress(progressObservable: Observable<string>) {
-    this.progressStatus = true;
-    progressObservable.subscribe((progressText) => {
-      this.progressText = progressText;
+  public startProgressMode(progressObservable: Observable<string>) {
+    this.isProgressMode = true;
+    progressObservable.subscribe((progressMessage) => {
+      this.progressMessage = progressMessage;
     });
   }
 
-  public disableProgress() {
-    this.progressStatus = false;
+  public stopProgressMode() {
+    this.isProgressMode = false;
+    this.progressMessage = '';
   }
 
   actionSelected(action: string): void{
