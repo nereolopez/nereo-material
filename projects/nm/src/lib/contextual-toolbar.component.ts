@@ -24,7 +24,7 @@ import { Observable } from 'rxjs';
         </mat-menu>
       </div>
       <div *ngIf="isProgressMode">
-        <mat-spinner></mat-spinner>
+        <mat-spinner [diameter]='24'></mat-spinner>
         {{ progressMessage }}
         <span class="spacer"></span>
       </div>
@@ -38,8 +38,19 @@ import { Observable } from 'rxjs';
     z-index: 999;
   }
 
+  mat-toolbar > div {
+    align-items: center;
+    display: flex;
+    width: 100%;
+  }
+
   .page-contextual-toolbar{
     position: fixed;
+  }
+
+  mat-spinner {
+    margin-left: 8px;
+    margin-right: 8px;
   }
 
   .card-contextual-toolbar {

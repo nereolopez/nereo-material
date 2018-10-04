@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatToolbarModule, MatButtonModule, MatIconModule, MatTooltipModule, MatMenuModule } from '@angular/material';
+import { MatToolbarModule, MatButtonModule, MatIconModule, MatTooltipModule, MatMenuModule, MatProgressSpinnerModule } from '@angular/material';
 
 import { ContextualToolbarComponent } from './contextual-toolbar.component';
 
@@ -12,6 +12,7 @@ import { ContextualToolbarComponent } from './contextual-toolbar.component';
     MatIconModule,
     MatTooltipModule,
     MatMenuModule,
+    MatProgressSpinnerModule
   ],
   declarations: [ContextualToolbarComponent],
   exports: [ContextualToolbarComponent]
