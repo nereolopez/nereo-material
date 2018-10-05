@@ -1,13 +1,15 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'nm-contextual-toolbar',
   template: `
     <mat-toolbar *ngIf="count > 0" [ngClass]="classesToApply">
-      <div *ngIf="!isProgressMode">
+      <ng-container *ngIf="progressMessage | async; then progressMode; else defaultMode">
+      </ng-container>
+      <ng-template #defaultMode>
         <button mat-icon-button (click)="clear()">
-            <mat-icon>clear</mat-icon>
+        <mat-icon>clear</mat-icon>
         </button>
         {{count}} selected
         <span class="spacer"></span>
@@ -22,12 +24,12 @@ import { Observable } from 'rxjs';
                   *ngFor="let moreAction of moreActions" 
                   (click)="actionSelected(moreAction.name)">{{moreAction.name}}</button>
         </mat-menu>
-      </div>
-      <div *ngIf="isProgressMode">
+      </ng-template>
+      <ng-template #progressMode>
         <mat-spinner [diameter]='24'></mat-spinner>
-        {{ progressMessage }}
+        {{ progressMessage | async }}
         <span class="spacer"></span>
-      </div>
+      </ng-template>
     </mat-toolbar>
   `,
   styles: [`
@@ -78,8 +80,7 @@ export class ContextualToolbarComponent implements OnInit {
 
   classesToApply = { };
 
-  isProgressMode : boolean = false;
-  progressMessage : string = '';
+  progressMessage : BehaviorSubject<string> = new BehaviorSubject<string>(null);
 
   constructor() { }
 
@@ -94,16 +95,12 @@ export class ContextualToolbarComponent implements OnInit {
     }
   }
 
-  public startProgressMode(progressObservable: Observable<string>) {
-    this.isProgressMode = true;
-    progressObservable.subscribe((progressMessage) => {
-      this.progressMessage = progressMessage;
-    });
+  public setProgress(progressMessage: string) {
+    this.progressMessage.next(progressMessage);
   }
 
-  public stopProgressMode() {
-    this.isProgressMode = false;
-    this.progressMessage = '';
+  public stopProgress() {
+    this.progressMessage.next(null);
   }
 
   actionSelected(action: string): void{
