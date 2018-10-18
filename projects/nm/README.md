@@ -59,7 +59,9 @@ This component is what is referred to as the [Contextual Action Bar](https://mat
 ![Contextual Action Bar](https://material.io/design/assets/1sej9Nb4bY284xcA-oF5k_mgyTMxWN_2q/topappbars-contextual.png)
 *Image from Material Design documentation site*
 
-Whenever you have items selected, no matter what they are, it will position itself covering the default `MatToolbar` offering the actions you need it to.
+Whenever you have items selected, no matter what they are, it will position itself covering the default `MatToolbar` (or positioned on the top of the card, based on what you contextualize it to) offering the actions you need it to.
+
+It can also display the progress of the actions by using the method `setProgress(string)`. When invoked, the icons disappear and only a progress indicator together with the given message will be displayed. Once in *progress mode*, you can keep passing new messages with the same method to update the progress message as it internally uses a `BehaviorSubject`. To go back to the normal state, just invoke its `stopProgress()` method.
 
 #### API Reference
 
@@ -78,7 +80,15 @@ import { ContextualToolbarModule } from 'nereo-material';
 | @Output() clearSelection: EventEmitter();            | Emits an event when the clear button (on the left side) is clicked.  |
 
 
-#### Actions
+#### Methods
+| Name                                                      | Description  |
+|---|---|
+| setProgress(progressMessage: string)  | Changes the Contextual Toolbar state to progress mode and displays the given progress message. |
+| stopProgress()                        | Changes the Contextual Toolbar state to normal mode, hiding the progress mode. |
+
+#### Model
+
+##### Actions
 The `actions` property receives an array of actions. This is what it expects as an action:
 
 ```ts
@@ -88,7 +98,7 @@ The `actions` property receives an array of actions. This is what it expects as 
 }
 ```
 
-#### More Actions
+##### More Actions
 When more actions are passed to the Contextual Toolbar, a `more` button will be created as the last icon button in the toolbar. All these additional actions will be placed as a menu that will be displayed when clicking on this button. This is what the `moreActions` property is expecting:
 
 ```ts
@@ -146,7 +156,7 @@ import { BannerModule } from 'nereo-material';
 | @Output() mainActionClick: EventEmitter();           | Emits an event when the main button is clicked. |
 | @Output() mainActionClick: EventEmitter();           | Emits an event when the secondary button is clicked.  |
 
-#### Using Contextual Toolbar
+#### Using the Banner
 
 Add it to as shown below components where you will have selections:
 
