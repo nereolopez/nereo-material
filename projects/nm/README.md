@@ -158,7 +158,7 @@ import { BannerModule } from 'nereo-material';
 
 #### Using the Banner
 
-Add it to as shown below components where you will have selections:
+Add it as shown below to the component where you want to use it.
 
 ```html
 <nm-banner [icon]="'signal_wifi_off'"
