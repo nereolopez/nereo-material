@@ -20,12 +20,18 @@ export class BackdropComponent implements OnInit {
     let backLayer = this.getBackLayer();
     let frontLayer = this.getFrontLayer();
 
-    frontLayer.style.top = (backLayer.offsetHeight - this.defaultMargin) + 'px';
+    let from = frontLayer.offsetTop;
+    let to = backLayer.offsetHeight - this.defaultMargin;
+    this.animateFrontLayerDown(frontLayer, from, to);
   }
 
   public conceal(){
+    console.log("conceal");
     let frontLayer = this.getFrontLayer();
-    frontLayer.style.top = this.backLayerMinHeight + 'px';
+
+    let from = frontLayer.offsetTop;
+    let to = this.backLayerMinHeight;
+    this.animateFrontLayerUp(frontLayer, from, to);
   }
 
   private getBackLayer(): HTMLElement {
@@ -34,6 +40,35 @@ export class BackdropComponent implements OnInit {
 
   private getFrontLayer(): HTMLElement {
     return <HTMLElement>document.querySelector('nm-backdrop-front-layer');
+  }
+
+  // TODO Refactor animations to single function
+  private animateFrontLayerDown(frontLayer: HTMLElement, from: number, to: number){
+    let pos = from;
+    let interval = setInterval(frame, 10);
+
+    function frame() {
+        if (pos >= to) {
+            clearInterval(interval);
+        } else {
+            pos = to > from ? pos + 10 : pos -10;   
+            frontLayer.style.top = pos + 'px'; 
+        }
+    }
+  }
+
+  private animateFrontLayerUp(frontLayer: HTMLElement, from: number, to: number){
+    let pos = from;
+    let interval = setInterval(frame, 10);
+
+    function frame() {
+        if (pos <= to) {
+            clearInterval(interval);
+        } else {
+            pos = to > from ? pos + 10 : pos -10;   
+            frontLayer.style.top = pos + 'px'; 
+        }
+    }
   }
 
 }
