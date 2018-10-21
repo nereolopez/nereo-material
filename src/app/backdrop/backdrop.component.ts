@@ -10,6 +10,7 @@ export class BackdropComponent implements OnInit {
 
   private defaultMargin: number = 16;
   private backLayerMinHeight: number = 56;
+  private frontLayerMinHeight:number = 42; // TODO adjust when using front layer subtitle component
 
   constructor() { }
 
@@ -42,28 +43,42 @@ export class BackdropComponent implements OnInit {
     return <HTMLElement>document.querySelector('nm-backdrop-front-layer');
   }
 
+  private getWindowHeight(): number {
+    return document.documentElement.clientHeight;
+  }
+
   // TODO Refactor animations to single function
   private animateFrontLayerDown(frontLayer: HTMLElement, from: number, to: number){
     let pos = from;
-    let interval = setInterval(frame, 10);
+    let maxPos = this.getWindowHeight() - this.frontLayerMinHeight;
 
+    let interval = setInterval(frame, 3);
+  
     function frame() {
-        if (pos >= to) {
-            clearInterval(interval);
-        } else {
-            pos = to > from ? pos + 10 : pos -10;   
-            frontLayer.style.top = pos + 'px'; 
+      if (pos >= to || pos >= maxPos) {
+        if (to >= maxPos){
+          frontLayer.style.top = maxPos + 'px';
         }
+        else {
+          frontLayer.style.top = to + 'px';
+        }
+        
+        clearInterval(interval);
+      } else {
+        pos = to > from ? pos + 10 : pos -10;   
+        frontLayer.style.top = pos + 'px'; 
+      }
     }
   }
 
   private animateFrontLayerUp(frontLayer: HTMLElement, from: number, to: number){
     let pos = from;
-    let interval = setInterval(frame, 10);
+    let interval = setInterval(frame, 3);
 
     function frame() {
         if (pos <= to) {
-            clearInterval(interval);
+          frontLayer.style.top = to + 'px';   
+          clearInterval(interval);
         } else {
             pos = to > from ? pos + 10 : pos -10;   
             frontLayer.style.top = pos + 'px'; 

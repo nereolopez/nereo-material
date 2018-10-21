@@ -1,4 +1,8 @@
 $back-layer-min-height: 56px;
+
+$front-layer-min-height: 42px; // TODO adjust when using front-layer-subtitle-component
+$font-layer-content-top-margin: 12px;
+
 $default-margin: 16px;
 
 :host {
@@ -14,8 +18,8 @@ $default-margin: 16px;
     padding-bottom: $default-margin;
     width: 100%;
 
-    .nm-backdrop-back-layer-content{
-        margin: 0px $default-margin;
+    nm-backdrop-back-layer-content {
+        overflow-y: auto; // TODO scroll on content not working
     }
 }
 
@@ -23,14 +27,14 @@ $default-margin: 16px;
     background-color: white;  // TODO MAKE BINDABLE
     border-top-left-radius: $default-margin;
     border-top-right-radius: $default-margin;
+    bottom: 0;
     display: flex;
-    height: 200px; // TODO SET PROPER HEIGHT;
     position: absolute;
     top: $back-layer-min-height;
     width: 100%;
 
     .nm-backdrop-front-layer-content{
-        margin: $default-margin;
+        margin: $font-layer-content-top-margin $default-margin;
         width: 100%;
     }
 }
