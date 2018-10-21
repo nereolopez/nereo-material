@@ -1,8 +1,19 @@
 <nm-backdrop>
-    <nm-backdrop-back-layer>
-        <h2>BACK</h2>
+    <nm-backdrop-back-layer (click)="revealBackdrop()">
+        <nm-backdrop-back-layer-toolbar>
+            <mat-toolbar color="primary">Back Layer</mat-toolbar>
+        </nm-backdrop-back-layer-toolbar>
+
+        <nm-backdrop-back-layer-content>
+            <mat-list role="list">
+                <mat-list-item role="listitem">Item 1</mat-list-item>
+                <mat-list-item role="listitem">Item 2</mat-list-item>
+                <mat-list-item role="listitem">Item 3</mat-list-item>
+            </mat-list>
+        </nm-backdrop-back-layer-content>
     </nm-backdrop-back-layer>
-    <nm-backdrop-front-layer>
+
+    <nm-backdrop-front-layer (click)="concealBackdrop()">
         Front Layer
     </nm-backdrop-front-layer>
 </nm-backdrop>

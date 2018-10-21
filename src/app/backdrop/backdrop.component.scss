@@ -9,7 +9,9 @@ $default-margin: 16px;
     background-color: rgb(48,58,166); // TODO MAKE BINDABLE
     color: white;
     display: flex;
+    flex-direction: column;
     min-height: $back-layer-min-height;
+    padding-bottom: $default-margin;
     width: 100%;
 
     .nm-backdrop-back-layer-content{
@@ -29,5 +31,6 @@ $default-margin: 16px;
 
     .nm-backdrop-front-layer-content{
         margin: $default-margin;
+        width: 100%;
     }
 }
