@@ -13,6 +13,7 @@ import { BackdropBackLayerComponent } from './backdrop-back-layer/backdrop-back-
 import { BackdropFrontLayerComponent } from './backdrop-front-layer/backdrop-front-layer.component';
 import { BackdropBackLayerToolbarComponent } from './backdrop-back-layer-toolbar/backdrop-back-layer-toolbar.component';
 import { BackdropBackLayerContentComponent } from './backdrop-back-layer-content/backdrop-back-layer-content.component';
+import { BackdropFrontLayerSubtitleComponent } from './backdrop-front-layer-subtitle/backdrop-front-layer-subtitle.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { BackdropBackLayerContentComponent } from './backdrop-back-layer-content
     BackdropBackLayerComponent,
     BackdropFrontLayerComponent,
     BackdropBackLayerToolbarComponent,
-    BackdropBackLayerContentComponent
+    BackdropBackLayerContentComponent,
+    BackdropFrontLayerSubtitleComponent
   ],
   imports: [
     BrowserModule,

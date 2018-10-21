@@ -10,7 +10,7 @@ export class BackdropComponent implements OnInit {
 
   private defaultMargin: number = 16;
   private backLayerMinHeight: number = 56;
-  private frontLayerMinHeight:number = 42; // TODO adjust when using front layer subtitle component
+  private frontLayerMinHeight:number = 42;
 
   constructor() { }
 

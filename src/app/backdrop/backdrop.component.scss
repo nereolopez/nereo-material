@@ -1,7 +1,7 @@
 $back-layer-min-height: 56px;
 
-$front-layer-min-height: 42px; // TODO adjust when using front-layer-subtitle-component
-$font-layer-content-top-margin: 12px;
+$front-layer-min-height: 42px;
+$front-layer-content-top-margin: 12px;
 
 $default-margin: 16px;
 
@@ -34,7 +34,13 @@ $default-margin: 16px;
     width: 100%;
 
     .nm-backdrop-front-layer-content{
-        margin: $font-layer-content-top-margin $default-margin;
+        margin: $front-layer-content-top-margin $default-margin;
         width: 100%;
+
+        nm-backdrop-front-layer-subtitle {
+            display: flex;
+            margin-bottom: $front-layer-content-top-margin;
+            width: 100%;
+        }
     }
 }
