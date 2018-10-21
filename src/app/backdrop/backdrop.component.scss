@@ -1,0 +1,33 @@
+$back-layer-min-height: 56px;
+$default-margin: 16px;
+
+:host {
+    width: 100%;
+}
+
+:host ::ng-deep nm-backdrop-back-layer{
+    background-color: rgb(48,58,166); // TODO MAKE BINDABLE
+    color: white;
+    display: flex;
+    min-height: $back-layer-min-height;
+    width: 100%;
+
+    .nm-backdrop-back-layer-content{
+        margin: 0px $default-margin;
+    }
+}
+
+:host ::ng-deep nm-backdrop-front-layer{
+    background-color: white;  // TODO MAKE BINDABLE
+    border-top-left-radius: $default-margin;
+    border-top-right-radius: $default-margin;
+    display: flex;
+    height: 200px; // TODO SET PROPER HEIGHT;
+    position: absolute;
+    top: $back-layer-min-height;
+    width: 100%;
+
+    .nm-backdrop-front-layer-content{
+        margin: $default-margin;
+    }
+}

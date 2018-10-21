@@ -8,10 +8,18 @@ import { MatToolbarModule, MatButtonModule, MatIconModule, MatTooltipModule, Mat
 import { AppComponent } from './app.component';
 
 import { ContextualToolbarModule } from '../../projects/nm/src/lib/contextual-toolbar.module';
+import { BackdropComponent } from './backdrop/backdrop.component';
+import { BackgropFrontLayerComponent } from './backgrop-front-layer/backgrop-front-layer.component';
+import { BackdropBackLayerComponent } from './backdrop-back-layer/backdrop-back-layer.component';
+import { BackdropFrontLayerComponent } from './backdrop-front-layer/backdrop-front-layer.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    BackdropComponent,
+    BackgropFrontLayerComponent,
+    BackdropBackLayerComponent,
+    BackdropFrontLayerComponent
   ],
   imports: [
     BrowserModule,
