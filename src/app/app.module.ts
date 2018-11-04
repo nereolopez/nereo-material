@@ -8,22 +8,12 @@ import { MatToolbarModule, MatButtonModule, MatIconModule, MatTooltipModule, Mat
 import { AppComponent } from './app.component';
 
 import { ContextualToolbarModule } from '../../projects/nm/src/lib/contextual-toolbar.module';
-import { BackdropComponent } from './backdrop/backdrop.component';
-import { BackdropBackLayerComponent } from './backdrop-back-layer/backdrop-back-layer.component';
-import { BackdropFrontLayerComponent } from './backdrop-front-layer/backdrop-front-layer.component';
-import { BackdropBackLayerToolbarComponent } from './backdrop-back-layer-toolbar/backdrop-back-layer-toolbar.component';
-import { BackdropBackLayerContentComponent } from './backdrop-back-layer-content/backdrop-back-layer-content.component';
-import { BackdropFrontLayerSubtitleComponent } from './backdrop-front-layer-subtitle/backdrop-front-layer-subtitle.component';
+
+import { BackdropModule } from 'projects/nm/src/public_api';
 
 @NgModule({
   declarations: [
     AppComponent,
-    BackdropComponent,
-    BackdropBackLayerComponent,
-    BackdropFrontLayerComponent,
-    BackdropBackLayerToolbarComponent,
-    BackdropBackLayerContentComponent,
-    BackdropFrontLayerSubtitleComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +23,8 @@ import { BackdropFrontLayerSubtitleComponent } from './backdrop-front-layer-subt
     MatIconModule,
     MatTooltipModule,
     MatListModule,
-    ContextualToolbarModule
+    ContextualToolbarModule,
+    BackdropModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

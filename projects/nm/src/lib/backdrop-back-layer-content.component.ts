@@ -2,9 +2,13 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'nm-backdrop-back-layer-content',
-  template: ``,
-  styles: [``]
+  template: `
+    <ng-content></ng-content>
+  `,
+  styles: [`
+    :host{
+      overflow-y: auto;
+    }
+  `]
 })
-export class BackdropBackLayerContentComponent {
-   
-}
+export class BackdropBackLayerContentComponent { }
