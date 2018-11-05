@@ -1,5 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
-import { BackdropComponent } from './backdrop/backdrop.component';
+import { BackdropComponent } from '../../projects/nm/src/public_api';
+
 
 @Component({
   selector: 'app-root',

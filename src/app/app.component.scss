@@ -1,0 +1,12 @@
+::ng-deep nm-backdrop-back-layer{
+    // TODO get colors from palette
+    background-color: rgb(48,58,166);  
+}
+
+::ng-deep nm-backdrop-back-layer-content{
+    color: white !important;
+}
+
+::ng-deep nm-backdrop-front-layer{
+    background-color: white;  // ToDo get color from palette;
+}

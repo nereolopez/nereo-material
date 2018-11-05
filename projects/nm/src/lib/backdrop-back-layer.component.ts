@@ -8,8 +8,6 @@ import { Component } from '@angular/core';
   `,
   styles: [`
     :host {
-      background-color: rgb(48,58,166); 
-      color: white; 
       display: flex;
       flex-direction: column;
       height: 100%;

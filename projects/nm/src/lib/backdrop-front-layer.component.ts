@@ -10,7 +10,6 @@ import { Component } from '@angular/core';
   `,
   styles: [`
     :host{
-        background-color: white;  
         border-top-left-radius: 16px;
         border-top-right-radius: 16px;
         bottom: 0;

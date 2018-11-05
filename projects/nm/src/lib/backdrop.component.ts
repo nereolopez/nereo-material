@@ -38,7 +38,7 @@ export class BackdropComponent {
   }
 
   private getBackLayer(): HTMLElement {
-    return <HTMLElement>document.querySelector('nm-backdrop-back-layer')
+    return <HTMLElement>document.querySelector('nm-backdrop-back-layer-content')
   }
 
   private getFrontLayer(): HTMLElement {
