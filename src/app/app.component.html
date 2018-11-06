@@ -1,36 +1,72 @@
 <nm-backdrop>
-    <nm-backdrop-back-layer (click)="revealBackdrop()">
+    <nm-backdrop-back-layer>
         <nm-backdrop-back-layer-toolbar>
-            <mat-toolbar color="primary">Back Layer</mat-toolbar>
+            <mat-toolbar color="primary">
+                <button mat-icon-button (click)="revealBackdrop()" *ngIf="!isBackdropRevealed">
+                    <mat-icon>menu</mat-icon>
+                </button>
+                <button mat-icon-button (click)="concealBackdrop()" *ngIf="isBackdropRevealed">
+                    <mat-icon>clear</mat-icon> 
+                </button>
+                <span>Cloud Drive</span>
+                <span class="spacer"></span>
+                <button mat-icon-button (click)="revealBackdrop();setSearchMode();" *ngIf="!isBackdropRevealed">
+                    <mat-icon>search</mat-icon> 
+                </button>
+            </mat-toolbar>
         </nm-backdrop-back-layer-toolbar>
 
         <nm-backdrop-back-layer-content>
-            <mat-list role="list">
-                <mat-list-item role="listitem">Item 1</mat-list-item>
-                <mat-list-item role="listitem">Item 2</mat-list-item>
-                <mat-list-item role="listitem">Item 3</mat-list-item>
-                <mat-list-item role="listitem">Item 1</mat-list-item>
-                <mat-list-item role="listitem">Item 2</mat-list-item>
-                <mat-list-item role="listitem">Item 3</mat-list-item>
-                <mat-list-item role="listitem">Item 1</mat-list-item>
-                <mat-list-item role="listitem">Item 2</mat-list-item>
-                <mat-list-item role="listitem">Item 3</mat-list-item>
-                <mat-list-item role="listitem">Item 1</mat-list-item>
-                <mat-list-item role="listitem">Item 2</mat-list-item>
-                <mat-list-item role="listitem">Item 3</mat-list-item>
-                <mat-list-item role="listitem">Item 1</mat-list-item>
-                <mat-list-item role="listitem">Item 2</mat-list-item>
-                <mat-list-item role="listitem">Item 3</mat-list-item>
+            <!-- 
+                Layer content can only have 1 children, in this
+                example, it will be either the mat-form-field or the list
+            -->
+            <mat-form-field appearance="outline" *ngIf="isSearchMode">
+                <mat-label>Search</mat-label>
+                <input matInput placeholder="Search">
+                <mat-icon matSuffix>search</mat-icon>
+            </mat-form-field>
+
+            <mat-list role="list" *ngIf="!isSearchMode">
+                <mat-list-item>                
+                    <mat-icon mat-list-icon>settings</mat-icon>
+                    <h4 mat-line>Settings</h4>                
+                </mat-list-item>
+                
+                <mat-list-item>
+                    <mat-icon mat-list-icon>help</mat-icon>
+                    <h4 mat-line>About</h4>
+                </mat-list-item>
+        
+                <mat-list-item>
+                    <mat-icon mat-list-icon>exit_to_app</mat-icon>
+                    <h4 mat-line>Logout</h4>
+                </mat-list-item>
             </mat-list>
         </nm-backdrop-back-layer-content>
     </nm-backdrop-back-layer>
 
     <nm-backdrop-front-layer (click)="concealBackdrop()">
         <nm-backdrop-front-layer-subtitle>
-            Subtitle
+            Sponge Bob's drive
         </nm-backdrop-front-layer-subtitle>
+        <!--Front Layer Content -->
         <div>
-            CONTENT!
+            <mat-list>
+            <h3 mat-subheader>Folders</h3>
+            <mat-list-item *ngFor="let folder of folders">
+                <mat-icon mat-list-icon>folder</mat-icon>
+                <h4 mat-line>{{folder.name}}</h4>
+                <p mat-line> {{folder.updated | date}} </p>
+            </mat-list-item>
+            <mat-divider></mat-divider>
+            <h3 mat-subheader>Notes</h3>
+            <mat-list-item *ngFor="let note of notes">
+                <mat-icon mat-list-icon>note</mat-icon>
+                <h4 mat-line>{{note.name}}</h4>
+                <p mat-line> {{note.updated | date}} </p>
+            </mat-list-item>
+            </mat-list>
         </div>
     </nm-backdrop-front-layer>
 </nm-backdrop>

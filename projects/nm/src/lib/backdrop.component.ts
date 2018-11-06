@@ -13,7 +13,6 @@ import { Component } from '@angular/core';
   `]
 })
 export class BackdropComponent {
-  private defaultMargin: number = 16;
   private backLayerMinHeight: number = 56;
   private frontLayerMinHeight:number = 42;
 
@@ -22,14 +21,14 @@ export class BackdropComponent {
   public reveal(){
     let backLayer = this.getBackLayer();
     let frontLayer = this.getFrontLayer();
+    let toolbar = this.getToolbar();
 
     let from = frontLayer.offsetTop;
-    let to = backLayer.offsetHeight - this.defaultMargin;
+    let to = toolbar.offsetHeight + backLayer.offsetHeight;
     this.animateFrontLayerDown(frontLayer, from, to);
   }
 
   public conceal(){
-    console.log("conceal");
     let frontLayer = this.getFrontLayer();
 
     let from = frontLayer.offsetTop;
@@ -43,6 +42,10 @@ export class BackdropComponent {
 
   private getFrontLayer(): HTMLElement {
     return <HTMLElement>document.querySelector('nm-backdrop-front-layer');
+  }
+
+  private getToolbar(): HTMLElement {
+    return <HTMLElement>document.querySelector('mat-toolbar');
   }
 
   private getWindowHeight(): number {

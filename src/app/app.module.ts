@@ -3,7 +3,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { NgModule } from '@angular/core';
 
-import { MatToolbarModule, MatButtonModule, MatIconModule, MatTooltipModule, MatTableModule, MatCheckboxModule, MatListModule } from '@angular/material';
+import { MatToolbarModule, MatButtonModule, MatIconModule, MatTooltipModule, MatTableModule, MatCheckboxModule, MatListModule, MatFormFieldModule, MatInputModule } from '@angular/material';
 
 import { AppComponent } from './app.component';
 
@@ -23,6 +23,8 @@ import { BackdropModule } from 'projects/nm/src/public_api';
     MatIconModule,
     MatTooltipModule,
     MatListModule,
+    MatFormFieldModule,
+    MatInputModule,
     ContextualToolbarModule,
     BackdropModule,
   ],
