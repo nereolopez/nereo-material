@@ -7,7 +7,6 @@ mat-form-field{
 }
 
 ::ng-deep nm-backdrop-back-layer{
-    // TODO get colors from palette
     background-color: rgb(48,58,166);  
 }
 
@@ -16,5 +15,5 @@ mat-form-field{
 }
 
 ::ng-deep nm-backdrop-front-layer{
-    background-color: white;  // ToDo get color from palette;
+    background-color: white; 
 }
