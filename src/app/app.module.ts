@@ -3,15 +3,17 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { NgModule } from '@angular/core';
 
-import { MatToolbarModule, MatButtonModule, MatIconModule, MatTooltipModule, MatTableModule, MatCheckboxModule } from '@angular/material';
+import { MatToolbarModule, MatButtonModule, MatIconModule, MatTooltipModule, MatTableModule, MatCheckboxModule, MatListModule, MatFormFieldModule, MatInputModule } from '@angular/material';
 
 import { AppComponent } from './app.component';
 
 import { ContextualToolbarModule } from '../../projects/nm/src/lib/contextual-toolbar.module';
 
+import { BackdropModule } from 'projects/nm/src/public_api';
+
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
@@ -20,7 +22,11 @@ import { ContextualToolbarModule } from '../../projects/nm/src/lib/contextual-to
     MatButtonModule,
     MatIconModule,
     MatTooltipModule,
-    ContextualToolbarModule
+    MatListModule,
+    MatFormFieldModule,
+    MatInputModule,
+    ContextualToolbarModule,
+    BackdropModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,19 @@
+.spacer {
+    flex: 1 1 auto;
+}
+
+mat-form-field{
+    width: 100%;
+}
+
+::ng-deep nm-backdrop-back-layer{
+    background-color: rgb(48,58,166);  
+}
+
+::ng-deep nm-backdrop-back-layer-content mat-list-item{
+    color: white !important;
+}
+
+::ng-deep nm-backdrop-front-layer{
+    background-color: white; 
+}
