@@ -11,8 +11,7 @@ export class AppComponent {
   @ViewChild(BackdropComponent)
   backdrop: BackdropComponent;
 
-  isBackdropRevealed = false;
-  isSearchMode = false;
+  isBackdropRevealed = false;  
 
   folders: Section[] = [
     {
@@ -46,16 +45,11 @@ export class AppComponent {
 
   concealBackdrop() {
     this.toggleBackdropRevealed();
-    this.isSearchMode = false;
     this.backdrop.conceal();
   }
 
   toggleBackdropRevealed(){
     this.isBackdropRevealed = !this.isBackdropRevealed;
-  }
-
-  setSearchMode(){
-    this.isSearchMode = true;
   }
 }
 

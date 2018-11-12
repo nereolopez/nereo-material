@@ -9,25 +9,11 @@
                     <mat-icon>clear</mat-icon> 
                 </button>
                 <span>Cloud Drive</span>
-                <span class="spacer"></span>
-                <button mat-icon-button (click)="revealBackdrop();setSearchMode();" *ngIf="!isBackdropRevealed">
-                    <mat-icon>search</mat-icon> 
-                </button>
             </mat-toolbar>
         </nm-backdrop-back-layer-toolbar>
 
         <nm-backdrop-back-layer-content>
-            <!-- 
-                Layer content can only have 1 children, in this
-                example, it will be either the mat-form-field or the list
-            -->
-            <mat-form-field appearance="outline" *ngIf="isSearchMode">
-                <mat-label>Search</mat-label>
-                <input matInput placeholder="Search">
-                <mat-icon matSuffix>search</mat-icon>
-            </mat-form-field>
-
-            <mat-list role="list" *ngIf="!isSearchMode">
+            <mat-list role="list">
                 <mat-list-item>                
                     <mat-icon mat-list-icon>settings</mat-icon>
                     <h4 mat-line>Settings</h4>                
