@@ -59,7 +59,7 @@ This component is what is referred to as the [Backdrop](https://material.io/desi
 ![Backdrop](https://storage.googleapis.com/spec-host-backup/mio-design%2Fassets%2F1eErd0lw7i8gnPvQcc-aLLzbtyJu_8xPs%2Felements-01.png)
 *Image from Material Design documentation site*
 
-It is indeed a set of components (`Backdrop`, `BackdropBackLayer`, `BackdropBackLayerToolbar`. `BackdropBackLayerContent`, `BackdropFrontLayer` and `BackdropFrontLayerSubtitle`). 
+It is indeed a set of components (`Backdrop`, `BackdropBackLayer`, `BackdropBackLayerToolbar`. `BackdropBackLayerContent`, `BackdropFrontLayer`, `BackdropFrontLayerSubtitle` and `BackdropFrontLayerContent`). 
 
 #### API Reference
 
@@ -92,9 +92,8 @@ Add it to your template as shown below:
       <nm-backdrop-front-layer-subtitle>
         Subtitle Example
       </nm-backdrop-front-layer-subtitle>
-      <!-- Place one element for the Front Layer Content, like the div below -->
-      <div>
-      </div>
+      <nm-backdrop-front-layer-content>
+      </nm-backdrop-front-layer-content>
     </nm-backdrop-front-layer>
   </nm-backdrop>
 ```

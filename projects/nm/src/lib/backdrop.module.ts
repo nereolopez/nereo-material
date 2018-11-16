@@ -6,6 +6,7 @@ import { BackdropBackLayerContentComponent } from './backdrop-back-layer-content
 import { BackdropBackLayerToolbarComponent } from './backdrop-back-layer-toolbar.component';
 import { BackdropFrontLayerComponent } from './backdrop-front-layer.component';
 import { BackdropFrontLayerSubtitleComponent } from './backdrop-front-layer-subtitle.component';
+import { BackdropFrontLayerContentComponent } from './backdrop-front-layer-content.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { BackdropFrontLayerSubtitleComponent } from './backdrop-front-layer-subt
     BackdropBackLayerContentComponent, 
     BackdropBackLayerToolbarComponent, 
     BackdropFrontLayerComponent,
-    BackdropFrontLayerSubtitleComponent
+    BackdropFrontLayerSubtitleComponent,
+    BackdropFrontLayerContentComponent,
   ],
   exports: [
     BackdropComponent, 
@@ -26,7 +28,8 @@ import { BackdropFrontLayerSubtitleComponent } from './backdrop-front-layer-subt
     BackdropBackLayerContentComponent, 
     BackdropBackLayerToolbarComponent, 
     BackdropFrontLayerComponent,
-    BackdropFrontLayerSubtitleComponent
+    BackdropFrontLayerSubtitleComponent,
+    BackdropFrontLayerContentComponent,
   ]
 })
 export class BackdropModule { }

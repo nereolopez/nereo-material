@@ -36,8 +36,7 @@
         <nm-backdrop-front-layer-subtitle>
             Sponge Bob's drive
         </nm-backdrop-front-layer-subtitle>
-        <!--Front Layer Content -->
-        <div>
+        <nm-backdrop-front-layer-content>
             <mat-list>
             <h3 mat-subheader>Folders</h3>
             <mat-list-item *ngFor="let folder of folders">
@@ -53,6 +52,6 @@
                 <p mat-line> {{note.updated | date}} </p>
             </mat-list-item>
             </mat-list>
-        </div>
+        </nm-backdrop-front-layer-content>
     </nm-backdrop-front-layer>
 </nm-backdrop>

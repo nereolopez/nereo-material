@@ -14,4 +14,5 @@ export * from './lib/backdrop-back-layer-content.component';
 export * from './lib/backdrop-back-layer-toolbar.component';
 export * from './lib/backdrop-front-layer.component';
 export * from './lib/backdrop-front-layer-subtitle.component';
+export * from './lib/backdrop-front-layer-content.component';
 export * from './lib/backdrop.module';

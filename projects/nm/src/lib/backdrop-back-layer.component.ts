@@ -11,8 +11,7 @@ import { Component } from '@angular/core';
       display: flex;
       flex-direction: column;
       height: 100%;
-      min-height: 56px;
-      padding-bottom: 16px;
+      min-height: 56px;      
       width: 100%;
     }
   `]

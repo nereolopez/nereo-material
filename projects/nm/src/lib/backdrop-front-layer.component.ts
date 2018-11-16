@@ -5,7 +5,7 @@ import { Component } from '@angular/core';
   template: `
     <div class="nm-backdrop-front-layer-content">
       <ng-content select="nm-backdrop-front-layer-subtitle"></ng-content>
-      <ng-content></ng-content>
+      <ng-content select="nm-backdrop-front-layer-content"></ng-content>
     </div>
   `,
   styles: [`
@@ -17,11 +17,6 @@ import { Component } from '@angular/core';
         position: absolute;
         top: 56px;
         width: 100%;
-    }
-
-    .nm-backdrop-front-layer-content{
-      margin: 12px 16px;
-      width: 100%;
     }
   `]
 })
