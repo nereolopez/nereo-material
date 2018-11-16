@@ -5,6 +5,9 @@ import { Component } from '@angular/core';
   template: `<ng-content></ng-content>`,
   styles: [`
     :host{
+        display: flex;
+        height: 100%;
+        overflow-y: auto;
         width: 100%;
     }
   `]
