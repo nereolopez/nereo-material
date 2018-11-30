@@ -1,5 +1,5 @@
-import { Component, ViewChild } from '@angular/core';
-import { BackdropComponent } from '../../projects/nm/src/public_api';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { ActionElement } from 'projects/nm/src/public_api';
 
 
 @Component({
@@ -8,52 +8,22 @@ import { BackdropComponent } from '../../projects/nm/src/public_api';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  @ViewChild(BackdropComponent)
-  backdrop: BackdropComponent;
-
-  isBackdropRevealed = false;  
-
-  folders: Section[] = [
-    {
-      name: 'Photos',
-      updated: new Date('1/1/16'),
-    },
-    {
-      name: 'Recipes',
-      updated: new Date('1/17/16'),
-    },
-    {
-      name: 'Work',
-      updated: new Date('1/28/16'),
-    }
-  ];
-  notes: Section[] = [
-    {
-      name: 'Vacation Itinerary',
-      updated: new Date('2/20/16'),
-    },
-    {
-      name: 'Kitchen Remodel',
-      updated: new Date('1/18/16'),
-    }
+  fabSpeedDialMenuActions : ActionElement[] = [
+    { icon: 'add', name: 'Action1'},
+    { icon: 'add', name: 'Action2'},
+    { icon: 'add', name: 'Action3'},
+    { icon: 'add', name: 'Action4'},
+    { icon: 'add', name: 'Action5'},
   ];
 
-  revealBackdrop(){
-    this.toggleBackdropRevealed();
-    this.backdrop.reveal();
+  constructor() {
+    
   }
 
-  concealBackdrop() {
-    this.toggleBackdropRevealed();
-    this.backdrop.conceal();
+  ngOnInit() {
   }
 
-  toggleBackdropRevealed(){
-    this.isBackdropRevealed = !this.isBackdropRevealed;
+  onClickMenuAction(action: ActionElement) {
+    console.log('onClickMenuAction', action);
   }
-}
-
-interface Section {
-  name: string;
-  updated: Date;
 }

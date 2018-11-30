@@ -9,7 +9,7 @@ import { AppComponent } from './app.component';
 
 import { ContextualToolbarModule } from '../../projects/nm/src/lib/contextual-toolbar.module';
 
-import { BackdropModule } from 'projects/nm/src/public_api';
+import { BackdropModule, FabSpeedDialModule } from 'projects/nm/src/public_api';
 
 @NgModule({
   declarations: [
@@ -27,6 +27,7 @@ import { BackdropModule } from 'projects/nm/src/public_api';
     MatInputModule,
     ContextualToolbarModule,
     BackdropModule,
+    FabSpeedDialModule
   ],
   providers: [],
   bootstrap: [AppComponent]

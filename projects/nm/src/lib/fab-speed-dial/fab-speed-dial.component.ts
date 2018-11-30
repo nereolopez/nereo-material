@@ -1,21 +1,21 @@
 import { FabSpeedDialAnimation } from './fab-speed-dial.animation';
-import { FabSpeedDialMenuAction } from './fab-speed-dial-menu-action';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { ActionElement } from '../model/action-element';
 
 @Component({
   selector: 'nm-fab-speed-dial',
   template: `
         <div class="fab-speed-dial" >
-            <div *ngIf="showMenuAction" [@speedDialStagger]="menuActions.length" class="menu-actions">
-                <div *ngFor="let menuAction of menuActions" class="button mini-button">
-                    <span class="action-text">{{ menuAction.menuText }}</span>
-                    <button mat-mini-fab color="primary" (click)="clickMenuActionFn(menuAction)"> 
-                        <mat-icon>{{ menuAction.menuIcon }}</mat-icon>
+            <div *ngIf="showActions" [@speedDialStagger]="actions.length" class="menu-actions">
+                <div *ngFor="let action of actions" class="button mini-button">
+                    <span class="action-text">{{ action.name }}</span>
+                    <button mat-mini-fab color="primary" (click)="actionSelected(action)"> 
+                        <mat-icon>{{ action.icon }}</mat-icon>
                     </button>
                 </div>
             </div>
             <div *ngIf="mainIcon" class="button">
-                <button mat-fab color="primary" (click)="showMenuActionFn()">
+                <button mat-fab color="primary" (click)="showMiniFabs()">
                     <mat-icon [@fabButtonAnimation]="{value: fabSpeedDialState}">{{ displayedIcon }}</mat-icon>
                 </button>
             </div>
@@ -24,18 +24,18 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
   styles: [`
     .fab-speed-dial {
         position: absolute;
-        bottom: 15px;
-        right: 15px;
+        bottom: 16px;
+        right: 16px;
         text-align: right;
     }
     .button {
-        margin-top: 15px;
+        margin-top: 16px;
     }
     .mini-button {
         margin-right: 8px;
     }
     .action-text {
-        margin-right: 15px;
+        margin-right: 16px;
     }
     .menu-actions {
         flex-direction: column-reverse;
@@ -47,11 +47,11 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 export class FabSpeedDialComponent implements OnInit {
   @Input() mainIcon: string;
 
-  @Input() menuActions: FabSpeedDialMenuAction[];
+  @Input() actions: ActionElement[];
 
-  @Output() clickMenuAction = new EventEmitter<FabSpeedDialMenuAction>();
+  @Output() selectedAction = new EventEmitter<ActionElement>();
 
-  showMenuAction: boolean = false;
+  showActions: boolean = false;
   displayedIcon: string = '';
   fabSpeedDialState: string = '';
 
@@ -61,9 +61,9 @@ export class FabSpeedDialComponent implements OnInit {
     this.displayedIcon = this.mainIcon;
   }
 
-  showMenuActionFn() {
-    this.showMenuAction = !this.showMenuAction;
-    if (this.showMenuAction) {
+  showMiniFabs() {
+    this.showActions = !this.showActions;
+    if (this.showActions) {
       this.fabSpeedDialState = 'active';
       this.displayedIcon = 'close';
     } 
@@ -73,7 +73,7 @@ export class FabSpeedDialComponent implements OnInit {
     }
   }
 
-  clickMenuActionFn(menuAction: FabSpeedDialMenuAction) {
-    this.clickMenuAction.emit(menuAction);
+  actionSelected(action: ActionElement) {
+    this.selectedAction.emit(action);
   }
 }
