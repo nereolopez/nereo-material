@@ -5,15 +5,15 @@ import { ActionElement } from '../model/action-element';
 @Component({
   selector: 'nm-fab-speed-dial',
   template: `
-        <div *ngIf="showActions" [@speedDialStagger]="actions.length" class="menu-actions">
-            <div *ngFor="let action of actions" class="button mini-button">
-                <span class="action-text">{{ action.name }}</span>
+        <div *ngIf="showActions" [@speedDialStagger]="actions.length" class="nm-fab-speed-dial-menu-actions">
+            <div *ngFor="let action of actions" class="nm-fab-speed-dial-button nm-fab-speed-dial-mini-button">
+                <span class="nm-fab-speed-dial-action-text">{{ action.name }}</span>
                 <button mat-mini-fab color="primary" (click)="actionSelected(action)"> 
                     <mat-icon>{{ action.icon }}</mat-icon>
                 </button>
             </div>
         </div>
-        <div *ngIf="mainIcon" class="button">
+        <div *ngIf="mainIcon" class="nm-fab-speed-dial-button">
             <button mat-fab color="primary" (click)="toggleSpeedDial()">
                 <mat-icon [@fabButtonAnimation]="{value: fabSpeedDialState}">{{ displayedIcon }}</mat-icon>
             </button>
@@ -25,20 +25,20 @@ import { ActionElement } from '../model/action-element';
         bottom: 16px;
         right: 16px;
         text-align: right;
+    }
 
-        .button {
-            margin-top: 16px;
-        }
-        .mini-button {
-            margin-right: 8px;
-        }
-        .action-text {
-            margin-right: 16px;
-        }
-        .menu-actions {
-            flex-direction: column-reverse;
-            display: flex;
-        }
+    .nm-fab-speed-dial-button {
+        margin-top: 16px;
+    }
+    .nm-fab-speed-dial-mini-button {
+        margin-right: 8px;
+    }
+    .nm-fab-speed-dial-action-text {
+        margin-right: 16px;
+    }
+    .nm-fab-speed-dial-menu-actions {
+        flex-direction: column-reverse;
+        display: flex;
     }
   `],
   animations: FabSpeedDialAnimation
