@@ -6,10 +6,11 @@ import {
     state,
     style,
     transition,
-    trigger
+    trigger,
+    AnimationTriggerMetadata
   } from '@angular/animations';
   
-  export const FabSpeedDialAnimation = [
+  export const FabSpeedDialAnimation: AnimationTriggerMetadata[] = [
     trigger('fabButtonAnimation', [
       state('inactive', style({
         transform: 'rotate(0deg)'
