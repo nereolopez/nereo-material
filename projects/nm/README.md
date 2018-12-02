@@ -90,7 +90,14 @@ Add it to your template as shown below:
     </nm-backdrop-back-layer>
     <nm-backdrop-front-layer>
       <nm-backdrop-front-layer-subtitle>
-        Subtitle Example
+        
+        <!-- Front Layer Subtitle can have an Icon, a Title and an Icon Button  like this -->
+        <mat-icon>folder</mat-icon>  
+        <span>Sponge Bob's drive</span>
+        <button mat-icon-button>
+          <mat-icon>more_vert</mat-icon>
+        </button>
+
       </nm-backdrop-front-layer-subtitle>
       <nm-backdrop-front-layer-content>
       </nm-backdrop-front-layer-content>
@@ -113,7 +120,7 @@ To use the Backdrop functionality like revealing or concealing it, in the compon
 ```
 
 #### Backdrop Demo
-Not yet available
+This demo cannot be viewed in the Demo site as the Backdrop itself becomes a shell, but you can see how to use it in the [Github Repo](https://github.com/nereolopez/nereo-material-demo/tree/master/src/app/backdrop-demo).
 
 ### Banner
 This is the [Banner](https://material.io/design/components/banners.html) in Material Design docs. See the image below to understand it easily:
@@ -181,8 +188,8 @@ import { ContextualToolbarModule } from 'nereo-material';
 | Name                                                      | Description  |
 |---|---|
 | @Input() count: number                                    | Receives the number of items that have been selected  |
-| @Input() actions: any                                     | Receives an array of actions to be displayed in the right corner. [See below what an action looks like](#actions)  |
-| @Input() moreActions: any                                 | Receives an array of additional actions that will be shown as a menu under the `more` button that will be automatically created. [See below what an additional action looks like](#more-actions) |
+| @Input() actions: ActionElement[]                                     | Receives an array of actions to be displayed in the right corner. [See below what an action looks like](#actions)  |
+| @Input() moreActions: ActionElement[]                                 | Receives an array of additional actions that will be shown as a menu under the `more` button that will be automatically created. [See below what an additional action looks like](#more-actions) |
 | @Input() contextualizeTo: string | Contextualizes the toolbar either to the `page` or to the parent `card`. It is defaulted to `page` mode. [See below the different contextualizations it can have](#contextualization) |
 | @Output() selectedAction: EventEmitter<string>();    | Emits an event with the name of the selected action so that you can process it. |
 | @Output() clearSelection: EventEmitter();            | Emits an event when the clear button (on the left side) is clicked.  |

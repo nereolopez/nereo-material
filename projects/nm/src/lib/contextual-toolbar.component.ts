@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Observable, BehaviorSubject } from 'rxjs';
+import { ActionElement } from '../public_api';
 
 @Component({
   selector: 'nm-contextual-toolbar',
@@ -68,9 +69,9 @@ export class ContextualToolbarComponent implements OnInit {
 
   @Input() count:  number;
 
-  @Input() actions: any[];
+  @Input() actions: ActionElement[];
 
-  @Input() moreActions: any[];
+  @Input() moreActions: ActionElement[];
 
   @Input() contextualizeTo: string;
 
