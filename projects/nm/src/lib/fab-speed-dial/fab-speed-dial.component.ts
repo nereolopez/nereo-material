@@ -5,41 +5,40 @@ import { ActionElement } from '../model/action-element';
 @Component({
   selector: 'nm-fab-speed-dial',
   template: `
-        <div class="fab-speed-dial" >
-            <div *ngIf="showActions" [@speedDialStagger]="actions.length" class="menu-actions">
-                <div *ngFor="let action of actions" class="button mini-button">
-                    <span class="action-text">{{ action.name }}</span>
-                    <button mat-mini-fab color="primary" (click)="actionSelected(action)"> 
-                        <mat-icon>{{ action.icon }}</mat-icon>
-                    </button>
-                </div>
-            </div>
-            <div *ngIf="mainIcon" class="button">
-                <button mat-fab color="primary" (click)="showMiniFabs()">
-                    <mat-icon [@fabButtonAnimation]="{value: fabSpeedDialState}">{{ displayedIcon }}</mat-icon>
+        <div *ngIf="showActions" [@speedDialStagger]="actions.length" class="menu-actions">
+            <div *ngFor="let action of actions" class="button mini-button">
+                <span class="action-text">{{ action.name }}</span>
+                <button mat-mini-fab color="primary" (click)="actionSelected(action)"> 
+                    <mat-icon>{{ action.icon }}</mat-icon>
                 </button>
             </div>
         </div>
+        <div *ngIf="mainIcon" class="button">
+            <button mat-fab color="primary" (click)="toggleSpeedDial()">
+                <mat-icon [@fabButtonAnimation]="{value: fabSpeedDialState}">{{ displayedIcon }}</mat-icon>
+            </button>
+        </div>
     `,
   styles: [`
-    .fab-speed-dial {
+    :host {
         position: absolute;
         bottom: 16px;
         right: 16px;
         text-align: right;
-    }
-    .button {
-        margin-top: 16px;
-    }
-    .mini-button {
-        margin-right: 8px;
-    }
-    .action-text {
-        margin-right: 16px;
-    }
-    .menu-actions {
-        flex-direction: column-reverse;
-        display: flex;
+
+        .button {
+            margin-top: 16px;
+        }
+        .mini-button {
+            margin-right: 8px;
+        }
+        .action-text {
+            margin-right: 16px;
+        }
+        .menu-actions {
+            flex-direction: column-reverse;
+            display: flex;
+        }
     }
   `],
   animations: FabSpeedDialAnimation
@@ -61,7 +60,7 @@ export class FabSpeedDialComponent implements OnInit {
     this.displayedIcon = this.mainIcon;
   }
 
-  showMiniFabs() {
+  toggleSpeedDial() {
     this.showActions = !this.showActions;
     if (this.showActions) {
       this.fabSpeedDialState = 'active';
@@ -75,5 +74,6 @@ export class FabSpeedDialComponent implements OnInit {
 
   actionSelected(action: ActionElement) {
     this.selectedAction.emit(action);
+    this.toggleSpeedDial();
   }
 }
