@@ -4,11 +4,12 @@ import { ActionElement } from '../model/action-element';
 
 @Component({
   selector: 'nm-fab-speed-dial',
-  template: `
+	template: `
+		<div *ngIf="isCorrectActionsNumber">
         <div id="nm-fab-speed-dial-button-overlay"></div>
         <div *ngIf="showActions" [@speedDialStagger]="actions.length" class="nm-fab-speed-dial-menu-actions">
             <div *ngFor="let action of actions" class="nm-fab-speed-dial-button nm-fab-speed-dial-mini-button">
-                <mat-card class="nm-fab-speed-dial-card-action">
+                <mat-card class="nm-fab-speed-dial-card-action" *ngIf="action.name">
                     {{ action.name }}
                 </mat-card>
                 <button mat-mini-fab color="primary" (click)="actionSelected(action)"> 
@@ -21,7 +22,8 @@ import { ActionElement } from '../model/action-element';
                 <mat-icon [@fabButtonAnimation]="{value: fabSpeedDialState}">{{ displayedIcon }}</mat-icon>
             </button>
         </div>
-    `,
+		</div>
+		`,
   styles: [`
     :host {
         position: absolute;
@@ -35,8 +37,7 @@ import { ActionElement } from '../model/action-element';
     }
     .nm-fab-speed-dial-mini-button {
         display: flex;
-        align-items: center;
-        margin-right: 8px;
+        align-items: flex-end;
     }
     .nm-fab-speed-dial-card-action {
         margin-right: 16px;
@@ -47,7 +48,9 @@ import { ActionElement } from '../model/action-element';
     }
     .nm-fab-speed-dial-menu-actions {
         flex-direction: column-reverse;
-        display: flex;
+				display: flex;
+				align-items: flex-end;
+				margin-right: 8px;
     }
     .nm-fab-speed-dial-overlay {
         width: 100%;
@@ -56,7 +59,7 @@ import { ActionElement } from '../model/action-element';
         left: 0;
         top: 0;
         z-index: -1;
-        background: rgba(0, 0, 0, 0.32);
+				background: rgba(0, 0, 0, 0.32);
     }
   `],
   animations: FabSpeedDialAnimation
@@ -70,13 +73,26 @@ export class FabSpeedDialComponent implements OnInit {
 
   showActions: boolean = false;
   displayedIcon: string = '';
-  fabSpeedDialState: string = '';
+	fabSpeedDialState: string = '';
+	isCorrectActionsNumber: boolean = true;
 
   constructor() { }
 
   ngOnInit() {
     this.displayedIcon = this.mainIcon;
+    this.checkActions();
   }
+
+	checkActions() {
+		if (this.actions.length < 3) {
+			console.error('A speed dial should include at least three options.');
+			this.isCorrectActionsNumber = false;
+		}
+		else if (this.actions.length > 6) {
+			console.error('A speed dial should include no more than six options.');	
+			this.isCorrectActionsNumber = false;
+		}
+	}
 
   toggleSpeedDial() {
     this.showActions = !this.showActions;
