@@ -9,7 +9,7 @@ import { ActionElement } from '../model/action-element';
             <div id="nm-fab-speed-dial-button-overlay"></div>
             <div class="nm-fab-speed-dial-button-component">
                 <div *ngIf="showActions" [@speedDialStagger]="actions.length" class="nm-fab-speed-dial-menu-actions">
-                    <div *ngFor="let action of actions" class="nm-fab-speed-dial-button nm-fab-speed-dial-mini-button">
+                    <div *ngFor="let action of actions" class="nm-fab-speed-dial-mini-button">
                         <mat-card class="nm-fab-speed-dial-card-action" *ngIf="action.name">
                             {{ action.name }}
                         </mat-card>
@@ -18,27 +18,23 @@ import { ActionElement } from '../model/action-element';
                         </button>
                     </div>
                 </div>
-                <div *ngIf="mainIcon" class="nm-fab-speed-dial-button">
-                    <button mat-fab color="primary" (click)="toggleSpeedDial()">
-                        <mat-icon [@fabButtonAnimation]="{value: fabSpeedDialState}">{{ displayedIcon }}</mat-icon>
-                    </button>
-                </div>
+                <button mat-fab color="primary" (click)="toggleSpeedDial()">
+                    <mat-icon [@fabButtonAnimation]="{value: fabSpeedDialState}">{{ displayedIcon }}</mat-icon>
+                </button>
             </div>
         </div>
 		`,
   styles: [`
     .nm-fab-speed-dial-button-component {
-        position: absolute;
+        position: fixed;
         bottom: 16px;
         right: 16px;
         text-align: right;
     }
-    .nm-fab-speed-dial-button {
-        margin-top: 16px;
-    }
     .nm-fab-speed-dial-mini-button {
         display: flex;
         align-items: flex-end;
+        margin-bottom: 16px;
     }
     .nm-fab-speed-dial-card-action {
         margin-right: 16px;
@@ -52,7 +48,6 @@ import { ActionElement } from '../model/action-element';
         display: flex;
         align-items: flex-end;
         margin-right: 8px;
-        margin-bottom: flex-end;
     }
     .nm-fab-speed-dial-overlay {
         width: 100%;
