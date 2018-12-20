@@ -6,38 +6,35 @@ import { ActionElement } from '../model/action-element';
   selector: 'nm-fab-speed-dial',
 	template: `
 		<div *ngIf="isCorrectActionsNumber">
-        <div id="nm-fab-speed-dial-button-overlay"></div>
-        <div *ngIf="showActions" [@speedDialStagger]="actions.length" class="nm-fab-speed-dial-menu-actions">
-            <div *ngFor="let action of actions" class="nm-fab-speed-dial-button nm-fab-speed-dial-mini-button">
-                <mat-card class="nm-fab-speed-dial-card-action" *ngIf="action.name">
-                    {{ action.name }}
-                </mat-card>
-                <button mat-mini-fab color="primary" (click)="actionSelected(action)"> 
-                    <mat-icon>{{ action.icon }}</mat-icon>
+            <div id="nm-fab-speed-dial-button-overlay"></div>
+            <div class="nm-fab-speed-dial-button-component">
+                <div *ngIf="showActions" [@speedDialStagger]="actions.length" class="nm-fab-speed-dial-menu-actions">
+                    <div *ngFor="let action of actions" class="nm-fab-speed-dial-mini-button">
+                        <mat-card class="nm-fab-speed-dial-card-action" *ngIf="action.name">
+                            {{ action.name }}
+                        </mat-card>
+                        <button mat-mini-fab color="primary" (click)="actionSelected(action)"> 
+                            <mat-icon>{{ action.icon }}</mat-icon>
+                        </button>
+                    </div>
+                </div>
+                <button mat-fab color="primary" (click)="toggleSpeedDial()">
+                    <mat-icon [@fabButtonAnimation]="{value: fabSpeedDialState}">{{ displayedIcon }}</mat-icon>
                 </button>
             </div>
         </div>
-        <div *ngIf="mainIcon" class="nm-fab-speed-dial-button">
-            <button mat-fab color="primary" (click)="toggleSpeedDial()">
-                <mat-icon [@fabButtonAnimation]="{value: fabSpeedDialState}">{{ displayedIcon }}</mat-icon>
-            </button>
-        </div>
-		</div>
 		`,
   styles: [`
-    :host {
-        position: absolute;
+    .nm-fab-speed-dial-button-component {
+        position: fixed;
         bottom: 16px;
         right: 16px;
         text-align: right;
     }
-
-    .nm-fab-speed-dial-button {
-        margin-top: 16px;
-    }
     .nm-fab-speed-dial-mini-button {
         display: flex;
         align-items: flex-end;
+        margin-bottom: 16px;
     }
     .nm-fab-speed-dial-card-action {
         margin-right: 16px;
@@ -48,9 +45,9 @@ import { ActionElement } from '../model/action-element';
     }
     .nm-fab-speed-dial-menu-actions {
         flex-direction: column-reverse;
-				display: flex;
-				align-items: flex-end;
-				margin-right: 8px;
+        display: flex;
+        align-items: flex-end;
+        margin-right: 8px;
     }
     .nm-fab-speed-dial-overlay {
         width: 100%;
@@ -58,8 +55,8 @@ import { ActionElement } from '../model/action-element';
         position: fixed;
         left: 0;
         top: 0;
-        z-index: -1;
-				background: rgba(0, 0, 0, 0.32);
+        z-index: 0;
+		background: rgba(0, 0, 0, 0.32);
     }
   `],
   animations: FabSpeedDialAnimation
