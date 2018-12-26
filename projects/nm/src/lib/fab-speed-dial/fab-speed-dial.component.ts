@@ -48,6 +48,8 @@ import { ActionElement } from '../model/action-element';
         display: flex;
         align-items: flex-end;
         margin-right: 8px;
+        position: relative;
+        bottom: 56px;
     }
     .nm-fab-speed-dial-overlay {
         width: 100%;
