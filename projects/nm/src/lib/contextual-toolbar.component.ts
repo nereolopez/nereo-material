@@ -15,7 +15,7 @@ import { ActionElement } from '../public_api';
         {{count}} selected
         <span class="spacer"></span>
         <button mat-icon-button *ngFor="let action of actions" (click)="actionSelected(action.name)">
-          <mat-icon matTooltip="getToolTip(action)">{{action.icon}}</mat-icon>
+          <mat-icon [matTooltip]="action.tooltip ? action.tooltip : action.name">{{action.icon}}</mat-icon>
         </button>
         <button mat-icon-button *ngIf="moreActions" [matMenuTriggerFor]="menu">
           <mat-icon matTooltip="more">more_vert</mat-icon>
@@ -99,12 +99,6 @@ export class ContextualToolbarComponent implements OnInit {
   public setProgress(progressMessage: string) {
     this.progressMessage.next(progressMessage);
   }
-
-	public getToolTip(action: ActionElement): string{
-		let tooltip = "";
-		action.tooltip !== null? tooltip = action.tooltip : tooltip = action.name;
-		return tooltip;
-	}
 
   public stopProgress() {
     this.progressMessage.next(null);
