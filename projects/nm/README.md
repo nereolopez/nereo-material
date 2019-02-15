@@ -204,23 +204,18 @@ import { ContextualToolbarModule } from 'nereo-material';
 #### Model
 
 ##### Actions
-The `actions` property receives an array of actions. This is what it expects as an action:
+The `actions` property receives an array of `ActionElement`.
 
 ```ts
-{
-    name: 'copy',
-    icon: 'file_copy'
+export interface ActionElement {
+  name: string;
+  icon: string;
+  tooltip: string;	
 }
 ```
 
 ##### More Actions
-When more actions are passed to the Contextual Toolbar, a `more` button will be created as the last icon button in the toolbar. All these additional actions will be placed as a menu that will be displayed when clicking on this button. This is what the `moreActions` property is expecting:
-
-```ts
-{
-  name: 'delete'
-}
-```
+Same as with the actions, it expects an array of `ActionElement`.
 
 #### Contextualization
 The Contextual Toolbar gives actions related to the selected content. It can currently be contextualized to the page (which will cover the main toolbar of the application on the top) or to the parent card (it will occupy the parent card's header - **be aware that the parent card has to have its `position: relative` in order to display the toolbar correctly, which would be placed inside the card's content**).
