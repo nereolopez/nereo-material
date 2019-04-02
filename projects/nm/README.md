@@ -63,7 +63,7 @@ It is indeed a set of components (`Backdrop`, `BackdropBackLayer`, `BackdropBack
 
 #### API Reference
 
-```
+```ts
 import { BackdropModule } from 'nereo-material';
 ```
 
@@ -132,7 +132,7 @@ Keep in mind that this is intended to be used only for mid-priority messages whe
 
 #### API Reference
 
-```
+```ts
 import { BannerModule } from 'nereo-material';
 ```
 
@@ -180,7 +180,7 @@ It can also display the progress of the actions by using the method `setProgress
 
 #### API Reference
 
-```
+```ts
 import { ContextualToolbarModule } from 'nereo-material';
 ```
 
@@ -188,11 +188,11 @@ import { ContextualToolbarModule } from 'nereo-material';
 | Name                                                      | Description  |
 |---|---|
 | @Input() count: number                                    | Receives the number of items that have been selected  |
-| @Input() actions: ActionElement[]                                     | Receives an array of actions to be displayed in the right corner. [See below what an action looks like](#actions)  |
-| @Input() moreActions: ActionElement[]                                 | Receives an array of additional actions that will be shown as a menu under the `more` button that will be automatically created. [See below what an additional action looks like](#more-actions) |
+| @Input() actions: ActionElement[]                         | Receives an array of actions to be displayed in the right corner. [See below what an action looks like](#actions)  |
+| @Input() moreActions: ActionElement[]                     | Receives an array of additional actions that will be shown as a menu under the `more` button that will be automatically created. [See below what an additional action looks like](#more-actions) |
 | @Input() contextualizeTo: string | Contextualizes the toolbar either to the `page` or to the parent `card`. It is defaulted to `page` mode. [See below the different contextualizations it can have](#contextualization) |
-| @Output() selectedAction: EventEmitter<string>();    | Emits an event with the name of the selected action so that you can process it. |
-| @Output() clearSelection: EventEmitter();            | Emits an event when the clear button (on the left side) is clicked.  |
+| @Output() selectedAction: EventEmitter<ActionElement>();  | Emits an event with the selected action so that you can process it. |
+| @Output() clearSelection: EventEmitter();                 | Emits an event when the clear button (on the left side) is clicked.  |
 
 
 #### Methods
@@ -237,5 +237,42 @@ Add it to as shown below components where you will have selections:
 
 Note that the `ContextualToolbarComponent` itself does not do any action, but notifies you instead. This means that you need to listen to the events it emits and take action. For instance, when the component emits the `clearSelection` event, you will need to clear the selection on your component. In this way, when the `count` is 0, the `ContextualToolbarComponent` will dissappear.
 
+#### i18n
+There is no much text in this component if you consider internationalization, only the number of selected items, the tooltip of the icons or the name of the menu items when clicking on the `more` button. 
+- For the number of selected items, it has an `i18n` attribute set to `@@contextualSelectedItems`. You just need to have this key in your translations if you want to localize it, otherwise, it will show the number of selected items plus the "selected" word in English.
+- For the tooltips of the buttons, you can use the `tooltip` attribute of the `ActionElement` when passing the `actions` input property to the component.
+- The `more` button also has an `i18n` attribute, in this case, set to `@@moreActions`. If no key is found in your project, it will show the word "more".
+- For the items in the menu when clicking on `more`, you can use again the `tooltip`attribute of the `ActionElement` when passing the `moreActions` input property to the component.
+
 #### Contextual Toolbar Demo
 Check the [demo code](https://github.com/nereolopez/nereo-material-demo/tree/master/src/app/contextual-toolbar-demo) to see how to use the component and the [demo page](https://nereo-material-demo.firebaseapp.com/contextual-toolbar) to see how it looks like.
+
+### (FAB) Speed Dial
+This component is what is referred to as the [FAB Speed Dial](https://material.io/design/components/buttons-floating-action-button.html#types-of-transitions) in Material Design docs. See the image below to understand it easily:
+
+![Speed Dial](https://storage.googleapis.com/spec-host-backup/mio-design%2Fassets%2F1fohUHLBjjut8g3UsgGGHHBV6PBboy8EK%2Ffab-transitions-speeddial-do-labels.png)
+*Image from Material Design documentation site*
+
+#### API Reference
+```ts
+import { FabSpeedDialModule } from 'nereo-material';
+```
+
+#### Properties
+| Name                                                      | Description  |
+|---|---|
+| @Input() mainIcon: string                                 | Receives the name of the Material Icon to be displayed in the main FAB  |
+| @Input() actions: ActionElement[]                         | Receives an array of actions to be displayed in the right corner. [See above what an action looks like](#actions)  |
+| @Output() selectedAction: EventEmitter<ActionElement>();  | Emits an event with the selected action so that you can process it. |
+
+#### Using the Speed Dial
+
+```html
+<nm-fab-speed-dial
+  [mainIcon]="'add'"
+  [actions]="fabSpeedDialMenuActions"
+  (clickMenuAction)="onClickMenuAction($event)">
+</nm-fab-speed-dial>
+```
+#### Speed Dial Demo
+Check the [demo code](https://github.com/nereolopez/nereo-material-demo/tree/master/src/app/speed-dial-demo) to see how to use the component and the [demo page](https://nereo-material-demo.firebaseapp.com/speed-dial) to see how it looks like.

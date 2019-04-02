@@ -7,9 +7,9 @@ import { MatToolbarModule, MatButtonModule, MatIconModule, MatTooltipModule, Mat
 
 import { AppComponent } from './app.component';
 
-import { ContextualToolbarModule } from '../../projects/nm/src/lib/contextual-toolbar.module';
 
-import { BackdropModule, FabSpeedDialModule } from 'projects/nm/src/public_api';
+
+import { BackdropModule, FabSpeedDialModule, ContextualToolbarModule } from 'projects/nm/src/public_api';
 
 @NgModule({
   declarations: [

@@ -1,5 +1,4 @@
-<nm-fab-speed-dial
-  [mainIcon]="'add'"
-  [actions]="fabSpeedDialMenuActions"
-  (clickMenuAction)="onClickMenuAction($event)">
-</nm-fab-speed-dial>
+<nm-contextual-toolbar [count]="selectedItems"
+                    [actions]="actions"
+                    [moreActions]="moreActions"
+                    [contextualizeTo]="'page'"></nm-contextual-toolbar> 

@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Observable, BehaviorSubject } from 'rxjs';
-import { ActionElement } from '../public_api';
+import { ActionElement } from '../../public_api';
 
 @Component({
   selector: 'nm-contextual-toolbar',
@@ -12,18 +12,18 @@ import { ActionElement } from '../public_api';
         <button mat-icon-button (click)="clear()">
         <mat-icon>clear</mat-icon>
         </button>
-        {{count}} selected
+        <span i18n="@@contextualSelectedItems">{{count}} selected</span>
         <span class="spacer"></span>
-        <button mat-icon-button *ngFor="let action of actions" (click)="actionSelected(action.name)">
+        <button mat-icon-button *ngFor="let action of actions" (click)="actionSelected(action)">
           <mat-icon [matTooltip]="action.tooltip ? action.tooltip : action.name">{{action.icon}}</mat-icon>
         </button>
         <button mat-icon-button *ngIf="moreActions" [matMenuTriggerFor]="menu">
-          <mat-icon matTooltip="more">more_vert</mat-icon>
+          <mat-icon matTooltip="more" i18n-matTooltip="@@moreActions">more_vert</mat-icon>
         </button>
         <mat-menu #menu="matMenu" yPosition="below">
           <button mat-menu-item 
                   *ngFor="let moreAction of moreActions" 
-                  (click)="actionSelected(moreAction.name)">{{moreAction.name}}</button>
+                  (click)="actionSelected(moreAction.name)">{{moreAction.tooltip ? moreAction.tooltip: moreAction.name}}</button>
         </mat-menu>
       </ng-template>
       <ng-template #progressMode>
@@ -75,7 +75,7 @@ export class ContextualToolbarComponent implements OnInit {
 
   @Input() contextualizeTo: string;
 
-  @Output() selectedAction = new EventEmitter<string>();
+  @Output() selectedAction = new EventEmitter<ActionElement>();
 
   @Output() clearSelection = new EventEmitter();
 
@@ -104,7 +104,7 @@ export class ContextualToolbarComponent implements OnInit {
     this.progressMessage.next(null);
   }
 
-  actionSelected(action: string): void{
+  actionSelected(action: ActionElement): void{
     this.selectedAction.emit(action);
   }
 
