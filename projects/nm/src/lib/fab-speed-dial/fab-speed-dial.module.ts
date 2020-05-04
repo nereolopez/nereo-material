@@ -1,6 +1,8 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
-import { MatButtonModule, MatIconModule, MatCardModule } from "@angular/material";
+import { MatCardModule } from '@angular/material/card';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
 import { FabSpeedDialComponent } from "./fab-speed-dial.component";
 
 @NgModule({

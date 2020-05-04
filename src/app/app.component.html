@@ -1,4 +1,74 @@
-<nm-contextual-toolbar [count]="selectedItems"
+<nm-contextual-toolbar [count]="selection.selected.length"
                     [actions]="actions"
                     [moreActions]="moreActions"
-                    [contextualizeTo]="'page'"></nm-contextual-toolbar> 
+                    [contextualizeTo]="'page'"
+                    (selectedAction)="actionSelected($event)"
+                    (clearSelection)="clearSelection()"></nm-contextual-toolbar> 
+                      
+<div class="container">
+  <h2>Contextual Toolbar</h2>
+
+  <p>
+    Select the lines in the grid you want. The Contextual Toolbar will appear showing you the number of items selected, and, in this case, offering you three actions (approve, copy and share) and one more action (delete). As this is just a demo, the actions in the toolbar will not modify the selected items, but just displayed in the console
+    the action you selected.</p>
+        
+  <p>
+    The progress mode is available using the Approve button located on the right (the first one) of the Contextual Toolbar.
+    In this example, one of the selected elements will be approved every second.
+  </p>
+  <p>
+    You can clear the selection by using the Clear button located on the left of the Contextual Toolbar. 
+  </p>
+
+
+  <mat-card>
+      <mat-card-header>
+          <mat-card-title>Elements Table</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+          
+        <mat-table #table [dataSource]="dataSource" class="table">
+            <ng-container matColumnDef="select">
+                <th *matHeaderCellDef>
+                    <mat-checkbox (change)="$event ? masterToggle() : null"
+                                  [checked]="selection.hasValue() && isAllSelected()"
+                                  [indeterminate]="selection.hasValue() && !isAllSelected()"
+                                  color="primary">                                
+                    </mat-checkbox>
+                </th>
+                <td *matCellDef="let row">
+                    <mat-checkbox (click)="$event.stopPropagation()"
+                                  (change)="$event ? selection.toggle(row) : null"
+                                  [checked]="selection.isSelected(row)"
+                                  color="primary">
+                                
+                    </mat-checkbox>
+                </td>
+            </ng-container>
+        
+            <ng-container matColumnDef="position">
+                <mat-header-cell *matHeaderCellDef>No.</mat-header-cell>
+                <mat-cell *matCellDef="let row">{{row.position}}</mat-cell>
+            </ng-container>
+            
+            <ng-container matColumnDef="name">
+                <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+                <mat-cell *matCellDef="let row"> {{row.name}} </mat-cell>
+            </ng-container>
+        
+            <ng-container matColumnDef="weight">
+                <mat-header-cell *matHeaderCellDef>Weight</mat-header-cell>
+                <mat-cell *matCellDef="let row" > {{row.weight}} </mat-cell>
+            </ng-container>
+        
+            <ng-container matColumnDef="symbol">
+                <mat-header-cell *matHeaderCellDef> Symbol </mat-header-cell>
+                <mat-cell *matCellDef="let row"> {{row.symbol}} </mat-cell>
+            </ng-container>
+        
+            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        </mat-table>
+      </mat-card-content>
+  </mat-card>
+</div>

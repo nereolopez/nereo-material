@@ -1,6 +1,9 @@
 import { Component, ViewChild } from '@angular/core';
 import { ActionElement, ContextualToolbarComponent } from 'projects/nm/src/public_api';
 
+import { SelectionModel } from '@angular/cdk/collections';
+import { MatTableDataSource } from '@angular/material/table';
+import { interval, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -11,20 +14,61 @@ export class AppComponent {
   @ViewChild(ContextualToolbarComponent) 
   contextualToolbar: ContextualToolbarComponent;
 
-  selectedItems: number = 5;
+  selectedItems: number = 0;
   approvedElements: number = 0;
   actions: ActionElement[] = ACTIONS;
   moreActions: ActionElement[] = MORE_ACTIONS;
+  progressSubscription: Subscription;
 
-  constructor() {
-    
+  displayedColumns = ['select', 'position', 'name', 'weight', 'symbol'];
+  dataSource = new MatTableDataSource<any>(ELEMENT_DATA);
+
+  selection = new SelectionModel<any>(true, []);
+
+  constructor(){}
+  
+  ngOnInit(){
   }
 
-  ngOnInit() {
+  isAllSelected(): boolean {
+    const numSelected = this.selection.selected.length;
+    const numRows = this.dataSource.data.length;
+    return numSelected === numRows;
   }
 
-  onClickMenuAction(action: ActionElement) {
-    console.log('onClickMenuAction', action);
+  masterToggle(): void{
+    this.isAllSelected() ?
+        this.selection.clear() :
+        this.dataSource.data.forEach(row => this.selection.select(row));
+  }
+
+  actionSelected(action: ActionElement): void{
+    console.log("App Component: ", action);
+    if (action.name == 'done') {
+      this.showProgress();
+    }
+  }
+
+  clearSelection(): void{
+    this.selection.clear();
+  }
+
+  showProgress(): void{
+    this.approvedElements = 0;
+    this.progressSubscription = interval(1000).subscribe(() => {
+      this.contextualToolbar.setProgress(
+        `Approved ${this.approvedElements} of ${this.selection.selected.length} elements. Please wait...`
+        );
+        this.stopProgress();
+        this.approvedElements++;
+      });
+  }
+
+  stopProgress() {
+    if (this.approvedElements == this.selection.selected.length + 1) {
+      this.progressSubscription.unsubscribe(); 
+      this.contextualToolbar.stopProgress(); 
+    }
   }
 }
 
@@ -45,8 +89,7 @@ const ACTIONS: any[] = [
 
 const MORE_ACTIONS: any[] = [
   {
-    name: 'delete',
-    tooltip: 'delete'
+    name: 'delete'
   }
 ]
 
