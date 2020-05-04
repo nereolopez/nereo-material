@@ -17,15 +17,15 @@ import { Component } from '@angular/core';
       width: auto;
     }
     
-    :host /deep/ mat-icon{
+    :host ::ng-deep mat-icon{
       margin-right: 8px;
     }
 
-    :host /deep/ span {
+    :host ::ng-deep span {
       font-size: 1.2rem;
     }
 
-    :host /deep/ .spacer {
+    :host ::ng-deep .spacer {
       flex: 1 1 auto;
     }
   `]
