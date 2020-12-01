@@ -184,6 +184,17 @@ It can also display the progress of the actions by using the method `setProgress
 import { ContextualToolbarModule } from 'nereo-material';
 ```
 
+#### Appearance
+By default, it will have the regular `MatToolbar` appearance with grey background and black font. As custom themes are not accessible from the libraries' mixins, you can customize the appearance with plain CSS by setting the variable `--primary` for the Contextual Toolbar Font Color, and the `--primary-lighter` for the Contextual Toolbar Background. 
+Here is an example of what you need to include in your CSS corresponding to the default Indigo color palette, being the primary the hue 500, and the lighter the hue 100 (you can add the colors according to your to your palette): 
+
+```scss
+:root {
+  --primary: #3F51B5;
+  --primary-lighter: #C5CAE9;
+}
+```
+
 #### Properties
 | Name                                                      | Description  |
 |---|---|
