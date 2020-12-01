@@ -1,0 +1,49 @@
+$backgroundColor: var(--primary-lighter, #f5f5f5);
+$color: var(--primary, black); 
+
+:host {
+
+  mat-toolbar {
+    background-color: $backgroundColor !important;
+    color: $color;
+    left: 0;
+    top: 0;
+    width: 100%;
+    z-index: 999;
+  }
+  
+  mat-toolbar > div {
+    align-items: center;
+    display: flex;
+    width: 100%;
+  }
+  
+  .page-contextual-toolbar{
+    position: fixed;
+  }
+
+  .textButton {
+    margin-right: 16px;
+    text-transform: uppercase;
+    width: auto;
+
+    ::ng-deep .mat-button-wrapper {
+      align-items: center;
+      display: flex;
+      gap: 4px;
+    }
+  }
+  
+  mat-spinner {
+    margin-left: 8px;
+    margin-right: 8px;
+  }
+  
+  .card-contextual-toolbar {
+    position: absolute;
+  }
+  
+  .spacer {
+      flex: 1 1 auto;
+  }
+}

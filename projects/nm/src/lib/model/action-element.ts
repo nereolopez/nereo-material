@@ -1,5 +1,6 @@
 export interface ActionElement {
-    name: string;
+  name: string;
 	icon: string;
+	text?: string;
 	tooltip: string;	
 }

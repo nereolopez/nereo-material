@@ -1,12 +1,15 @@
 <nm-contextual-toolbar [count]="selection.selected.length"
                     [actions]="actions"
+                    [displayMode]="contextualToolbarDisplayMode"
                     [moreActions]="moreActions"
                     [contextualizeTo]="'page'"
                     (selectedAction)="actionSelected($event)"
                     (clearSelection)="clearSelection()"></nm-contextual-toolbar> 
                       
 <div class="container">
-  <h2>Contextual Toolbar</h2>
+  <mat-toolbar color="primary">
+    <h2>Contextual Toolbar</h2>
+  </mat-toolbar>
 
   <p>
     Select the lines in the grid you want. The Contextual Toolbar will appear showing you the number of items selected, and, in this case, offering you three actions (approve, copy and share) and one more action (delete). As this is just a demo, the actions in the toolbar will not modify the selected items, but just displayed in the console

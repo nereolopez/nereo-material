@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { ActionElement, ContextualToolbarComponent } from 'projects/nm/src/public_api';
+import { ActionElement, ContextualToolbarComponent, ContextualToolbarDisplayMode } from 'projects/nm/src/public_api';
 
 import { SelectionModel } from '@angular/cdk/collections';
 import { MatTableDataSource } from '@angular/material/table';
@@ -17,6 +17,7 @@ export class AppComponent {
   selectedItems: number = 0;
   approvedElements: number = 0;
   actions: ActionElement[] = ACTIONS;
+  contextualToolbarDisplayMode: ContextualToolbarDisplayMode = ContextualToolbarDisplayMode.text;
   moreActions: ActionElement[] = MORE_ACTIONS;
   progressSubscription: Subscription;
 
@@ -75,15 +76,18 @@ export class AppComponent {
 const ACTIONS: any[] = [
   {
     name: 'done',
-    icon: 'done'
+    icon: 'done',
+    text: 'Confirm'
   },
   {
     name: 'copy',
-    icon: 'file_copy'
+    icon: 'file_copy',
+    text: 'Clone'
   },
   {
     name: 'share',
     icon: 'share',
+    text: 'Share', 
   }
 ];
 
