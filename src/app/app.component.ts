@@ -17,7 +17,7 @@ export class AppComponent {
   selectedItems: number = 0;
   approvedElements: number = 0;
   actions: ActionElement[] = ACTIONS;
-  contextualToolbarDisplayMode: ContextualToolbarDisplayMode = ContextualToolbarDisplayMode.icons;
+  contextualToolbarDisplayMode: ContextualToolbarDisplayMode = ContextualToolbarDisplayMode.text;
   moreActions: ActionElement[] = MORE_ACTIONS;
   progressSubscription: Subscription;
 

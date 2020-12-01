@@ -189,6 +189,7 @@ import { ContextualToolbarModule } from 'nereo-material';
 |---|---|
 | @Input() count: number                                    | Receives the number of items that have been selected  |
 | @Input() actions: ActionElement[]                         | Receives an array of actions to be displayed in the right corner. [See below what an action looks like](#actions)  |
+| @Input() displayMode: ContextualToolbarDisplayMode        | Receives whether to show Icons, Text or both in the Contextual Toolbar Actions.|
 | @Input() moreActions: ActionElement[]                     | Receives an array of additional actions that will be shown as a menu under the `more` button that will be automatically created. [See below what an additional action looks like](#more-actions) |
 | @Input() contextualizeTo: string | Contextualizes the toolbar either to the `page` or to the parent `card`. It is defaulted to `page` mode. [See below the different contextualizations it can have](#contextualization) |
 | @Output() selectedAction: EventEmitter<ActionElement>();  | Emits an event with the selected action so that you can process it. |
@@ -210,7 +211,18 @@ The `actions` property receives an array of `ActionElement`.
 export interface ActionElement {
   name: string;
   icon: string;
+  text?: string;
   tooltip: string;	
+}
+```
+
+##### Contextual Toolbar Display Mode
+The possible display modes for Contextual Toolbar Actions.
+```ts
+export enum ContextualToolbarDisplayMode {
+  icons = "icons", 
+  text = "text",
+  all = "all"
 }
 ```
 
