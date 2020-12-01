@@ -7,8 +7,8 @@ export * from './lib/model/action-element';
 export * from './lib/contextual-toolbar/contextual-toolbar.component';
 export * from './lib/contextual-toolbar/contextual-toolbar.module';
 
-export * from './lib/banner.component';
-export * from './lib/banner.module';
+export * from './lib/banner/banner.component';
+export * from './lib/banner/banner.module';
 
 export * from './lib/backdrop/backdrop.component';
 export * from './lib/backdrop/backdrop-back-layer.component';
