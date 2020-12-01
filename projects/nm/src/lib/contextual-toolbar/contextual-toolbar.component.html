@@ -1,0 +1,27 @@
+<mat-toolbar *ngIf="count > 0" [ngClass]="classesToApply">
+  <ng-container *ngIf="progressMessage | async; then progressMode; else defaultMode">
+  </ng-container>
+  <ng-template #defaultMode>
+    <button mat-icon-button (click)="clear()">
+    <mat-icon>clear</mat-icon>
+    </button>
+    <span i18n="@@contextualSelectedItems">{{count}} selected</span>
+    <span class="spacer"></span>
+    <button mat-icon-button *ngFor="let action of actions" (click)="actionSelected(action)">
+      <mat-icon [matTooltip]="action.tooltip ? action.tooltip : action.name">{{action.icon}}</mat-icon>
+    </button>
+    <button mat-icon-button *ngIf="moreActions" [matMenuTriggerFor]="menu">
+      <mat-icon matTooltip="more" i18n-matTooltip="@@moreActions">more_vert</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu" yPosition="below">
+      <button mat-menu-item 
+              *ngFor="let moreAction of moreActions" 
+              (click)="actionSelected(moreAction.name)">{{moreAction.tooltip ? moreAction.tooltip: moreAction.name}}</button>
+    </mat-menu>
+  </ng-template>
+  <ng-template #progressMode>
+    <mat-spinner [diameter]='24'></mat-spinner>
+    {{ progressMessage | async }}
+    <span class="spacer"></span>
+  </ng-template>
+</mat-toolbar>
