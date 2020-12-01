@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { ActionElement } from '../../public_api';
+import { ContextualToolbarDisplayMode } from '../model/model';
 
 @Component({
   selector: 'nm-contextual-toolbar',
@@ -12,6 +13,8 @@ export class ContextualToolbarComponent implements OnInit {
   @Input() count:  number;
 
   @Input() actions: ActionElement[];
+
+  @Input() displayMode: ContextualToolbarDisplayMode = ContextualToolbarDisplayMode.icons;
 
   @Input() moreActions: ActionElement[];
 
@@ -29,6 +32,15 @@ export class ContextualToolbarComponent implements OnInit {
 
   ngOnInit() {
     this.setContextualization();
+  }
+
+  showButtonIcon() {
+    console.log("Display Mode", this.displayMode);
+    return this.displayMode != ContextualToolbarDisplayMode.text;
+  }
+
+  showButtonText() {
+    return this.displayMode != ContextualToolbarDisplayMode.icons;
   }
 
   private setContextualization(){

@@ -3,13 +3,21 @@
   </ng-container>
   <ng-template #defaultMode>
     <button mat-icon-button (click)="clear()">
-    <mat-icon>clear</mat-icon>
+      <mat-icon>clear</mat-icon>
     </button>
     <span i18n="@@contextualSelectedItems">{{count}} selected</span>
+
     <span class="spacer"></span>
-    <button mat-icon-button *ngFor="let action of actions" (click)="actionSelected(action)">
-      <mat-icon [matTooltip]="action.tooltip ? action.tooltip : action.name">{{action.icon}}</mat-icon>
+    
+    <button mat-icon-button 
+            *ngFor="let action of actions" 
+            (click)="actionSelected(action)"
+            [class.textButton]="showButtonText()">
+      <mat-icon [matTooltip]="action.tooltip ? action.tooltip : action.name"
+                *ngIf="showButtonIcon()">{{action.icon}}</mat-icon>
+      <span *ngIf="showButtonText()">{{action.text}}</span>
     </button>
+    
     <button mat-icon-button *ngIf="moreActions" [matMenuTriggerFor]="menu">
       <mat-icon matTooltip="more" i18n-matTooltip="@@moreActions">more_vert</mat-icon>
     </button>

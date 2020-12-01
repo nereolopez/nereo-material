@@ -2,7 +2,7 @@
  * Public API Surface of nm
  */
 
-export * from './lib/model/action-element';
+export * from './lib/model/model';
 
 export * from './lib/contextual-toolbar/contextual-toolbar.component';
 export * from './lib/contextual-toolbar/contextual-toolbar.module';

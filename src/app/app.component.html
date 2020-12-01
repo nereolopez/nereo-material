@@ -1,5 +1,6 @@
 <nm-contextual-toolbar [count]="selection.selected.length"
                     [actions]="actions"
+                    [displayMode]="contextualToolbarDisplayMode"
                     [moreActions]="moreActions"
                     [contextualizeTo]="'page'"
                     (selectedAction)="actionSelected($event)"
