@@ -35,7 +35,6 @@ export class ContextualToolbarComponent implements OnInit {
   }
 
   showButtonIcon() {
-    console.log("Display Mode", this.displayMode);
     return this.displayMode != ContextualToolbarDisplayMode.text;
   }
 
