@@ -171,7 +171,7 @@ Check the [demo code](https://github.com/nereolopez/nereo-material-demo/tree/mas
 ### Contextual Toolbar
 This component is what is referred to as the [Contextual Action Bar](https://material.io/design/components/app-bars-top.html#usage) in Material Design docs. See the image below to understand it easily:
 
-![Contextual Action Bar](https://material.io/design/assets/1sej9Nb4bY284xcA-oF5k_mgyTMxWN_2q/topappbars-contextual.png)
+![Contextual Action Bar](https://lh3.googleusercontent.com/xeCK6g7S_Idvt8QJ3vV51Pz732lN5OvSIsk-foLDrXWvRfsni8q6-Z37OR2XwEABPk3Ns1LdKLFvZhiYaOE6tXI2oybhufklGVJsMRo=w1064-v0)
 *Image from Material Design documentation site*
 
 Whenever you have items selected, no matter what they are, it will position itself covering the default `MatToolbar` (or positioned on the top of the card, based on what you contextualize it to) offering the actions you need it to.
